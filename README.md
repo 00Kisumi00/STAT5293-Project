@@ -153,9 +153,7 @@ rag-faithfulness-project/
 ├── README.md
 ├── requirements.txt
 ├── demo_app.py
-│
-├── notebooks/
-│   └── rag_faithfulness_experiments.ipynb
+├── 5293_Final_Project.ipynb
 │
 ├── results/
 │   ├── retrieval_summary.csv
@@ -164,13 +162,10 @@ rag-faithfulness-project/
 │   ├── manual_faithfulness_review_labeled_new.csv
 │   └── representative_error_cases.csv
 │
-├── figures/
-│   ├── retrieval_performance_comparison.png
-│   ├── answer_quality_comparison.png
-│   └── manual_faithfulness_comparison.png
-│
-└── report/
-    └── final_report.pdf
+└── figures/
+    ├── retrieval_performance_comparison.png
+    ├── answer_quality_comparison.png
+    └── manual_faithfulness_comparison.png
 ```
 
 ## Setup
@@ -205,7 +200,7 @@ rouge-score
 Open the notebook:
 
 ```text
-notebooks/rag_faithfulness_experiments.ipynb
+5293_Final_Project.ipynb
 ```
 
 The notebook includes:
