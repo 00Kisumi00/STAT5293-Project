@@ -1,0 +1,14 @@
+numpy
+pandas
+matplotlib
+tqdm
+datasets
+rank-bm25
+sentence-transformers
+faiss-cpu
+transformers
+accelerate
+torch
+gradio
+evaluate
+rouge-score

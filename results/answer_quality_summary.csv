@@ -1,0 +1,8 @@
+config_name,em,f1
+Dense + Grounded,0.13,0.16715859360872148
+Dense + Rerank + Grounded,0.1,0.11977270354444267
+Hybrid + Rerank + Grounded,0.08,0.09686855214029126
+BM25 + Standard,0.065,0.0928126474333371
+Hybrid + Rerank + Evidence,0.075,0.091566829004329
+BM25 + Grounded,0.045,0.06040955291409012
+BM25 + Rerank + Grounded,0.015,0.023357012669083604
