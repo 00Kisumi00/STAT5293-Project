@@ -1,0 +1,401 @@
+config_name,prompt_type,question,gold_answer,generated_answer,em,f1
+Oracle Context + Grounded,grounded,In what year did Massachusetts first require children to be educated in schools?,1852,1852,1,1.0
+Oracle Context + Grounded,grounded,When were stromules discovered?,1962,1962,1,1.0
+Oracle Context + Grounded,grounded,Which artist who had a major influence on the Gothic Revival is represented in the V&A's British galleries?,Horace Walpole,Horace Walpole,1,1.0
+Oracle Context + Grounded,grounded,"In 1890, who did the university decide to team up with?",several regional colleges and universities,"Des Moines College, Kalamazoo College, Butler University, and Stetson University",0,0.13333333333333333
+Oracle Context + Grounded,grounded,Who got a touchdown making the score 10-7?,Jonathan Stewart,Jonathan Stewart,1,1.0
+Oracle Context + Grounded,grounded,How many Examination Boards exist in India?,30,30,1,1.0
+Oracle Context + Grounded,grounded,Who started rumors in 2008 that ABC would sell its ten owned-and-operated stations?,Caris & Co.,Caris & Co.,1,1.0
+Oracle Context + Grounded,grounded,Which network broadcasted the 50th Super Bowl game? ,CBS,CBS,1,1.0
+Oracle Context + Grounded,grounded,Why was this short termed organization created?,coordinate the response to the embargo,to coordinate the response to the embargo,0,0.923076923076923
+Oracle Context + Grounded,grounded,What does LGM stands for?,Last Glacial Maximum,Last Glacial Maximum,1,1.0
+Oracle Context + Grounded,grounded,What is the paper written by Richard Karp in 1972 that ushered in a new era of understanding between intractability and NP-complete problems?,"""Reducibility Among Combinatorial Problems""",Reducibility Among Combinatorial Problems,1,1.0
+Oracle Context + Grounded,grounded,What Lake in a German island Mainau receives a fraction of the Rhine's flow?,Lake Überlingen,Lake Überlingen,1,1.0
+Oracle Context + Grounded,grounded,What studio does ABC own at 1500 Broadway in NYC?,Times Square Studios,Times Square Studios,1,1.0
+Oracle Context + Grounded,grounded,How many fraternities are apart of the university?,fifteen,fifteen,1,1.0
+Oracle Context + Grounded,grounded,At what address did Goldenson secure a new headquarters for ABC?,1330 Avenue of the Americas in Manhattan,1330 Avenue of the Americas,0,0.8333333333333333
+Oracle Context + Grounded,grounded,Who had established the Russian empire to its former glory prior to 1921?,Bolshevik leaders,Bolshevik leaders,1,1.0
+Oracle Context + Grounded,grounded,What does the Riemann hypothesis state the source of irregularity in the distribution of points comes from?,random noise,Random noise,1,1.0
+Oracle Context + Grounded,grounded,Which work of Luther's is effective in teaching children?,Small Catechism,Small Catechism,1,1.0
+Oracle Context + Grounded,grounded,How was the civil disobedience shown in Antigone?,obey her conscience rather than human law,Not enough information,0,0.0
+Oracle Context + Grounded,grounded,Where do juvenile platyctenids live?,among the plankton,bottom,0,0.0
+Oracle Context + Grounded,grounded,How often are elections held for the Victorian Parliament?,every four years,Elections for the Victorian Parliament are now fixed and occur in November every four years.,0,0.33333333333333337
+Oracle Context + Grounded,grounded,What magnetic and electric force acts on a charge?,unified electromagnetic,Electrostatic force,0,0.0
+Oracle Context + Grounded,grounded,What kinds of growth did Kublai encourage?,"commercial, scientific, and cultural","commercial, scientific, and cultural",1,1.0
+Oracle Context + Grounded,grounded,What was the name of the first episode of the new Doctor Who series?,Rose,Rose,1,1.0
+Oracle Context + Grounded,grounded,Each of the extended metropolitan areas has a population that exceeds what number?,five million,five million,1,1.0
+Oracle Context + Grounded,grounded,Why is giving a defiant speech sometimes more harmful for the individual?,lack of remorse,Not enough information.,0,0.0
+Oracle Context + Grounded,grounded,When were Joseph Schumpeter and Norman Angell at their most prolific writing period?,before World War I,Before World War I,1,1.0
+Oracle Context + Grounded,grounded,How do competing businesses attract workers?,offering a higher wage,Offer a higher wage the best of their labor,0,0.46153846153846156
+Oracle Context + Grounded,grounded,How many teams up to Super Bowl 50 have been to the championship game eight times?,four,Not enough information.,0,0.0
+Oracle Context + Grounded,grounded,What plants create most electric power?,steam turbine,Steam turbine,1,1.0
+Oracle Context + Grounded,grounded,The epidemic in Newcastle was the most what in any British city at the time?,devastating loss,devastating loss,1,1.0
+Oracle Context + Grounded,grounded,"What additional srevice did BSkyB offer besides Video on Demand that they claimed offered ""substantially more value""?",HD channels,HD channels,1,1.0
+Oracle Context + Grounded,grounded,Who did Tesla think would run the world of the future?,women,Queen Bees,0,0.0
+Oracle Context + Grounded,grounded,What have many HT members graduated to joining?,terrorist groups,terrorist groups,1,1.0
+Oracle Context + Grounded,grounded,Approximately how many items are in the costume collection of the V&A?,"over 14,000","Over 14,000 outfits plus accessories",0,0.5714285714285715
+Oracle Context + Grounded,grounded,Which park is home to the Fresno Chafffee Zoo?,Roeding Park,Roeding Park,1,1.0
+Oracle Context + Grounded,grounded,The point at which different radiometric isotopes stop diffusing into and out of the crystal lattice is called what?,particular closure temperature,closure temperature,0,0.8
+Oracle Context + Grounded,grounded,What could someone be investigated for?,allegations of professional misconduct,Not enough information.,0,0.0
+Oracle Context + Grounded,grounded,What are examples of economic actors?,"worker, capitalist/business owner, landlord","worker, capitalist/business owner, landlord",1,1.0
+Oracle Context + Grounded,grounded,What field involves the study of the immune system?,Immunology,Immunology,1,1.0
+Oracle Context + Grounded,grounded,What are the phagocytes that are located in tissues in contact with the external environment called?,Dendritic cells,Dendritic cells,1,1.0
+Oracle Context + Grounded,grounded,What did the merchants of Newcastle plot to do to Timothy Dexter?,ruin him,ruin him,1,1.0
+Oracle Context + Grounded,grounded,What job did Tesla's father have in Gospic?,pastor,Pastor,1,1.0
+Oracle Context + Grounded,grounded,Which hotel did the Panthers stay at for the Super Bowl?,San Jose Marriott.,San Jose Marriott,1,1.0
+Oracle Context + Grounded,grounded,What are other alternative names for French and Indian War?,Fourth Intercolonial War and the Great War for the Empire,Fourth Intercolonial War and the Great War for the Empire,1,1.0
+Oracle Context + Grounded,grounded,"Outside of its use of automobiles, what else is southern California famous for using?",highways,highways,1,1.0
+Oracle Context + Grounded,grounded,What was the last name of the designers of Newcastle's library?,Green,Green,1,1.0
+Oracle Context + Grounded,grounded,How many people were on the test flight of the AS-206?,unmanned,Not enough information.,0,0.0
+Oracle Context + Grounded,grounded,What is the state average growth rate?,10.0%,10.0%,1,1.0
+Oracle Context + Grounded,grounded,When was the study on sequenced Y genomes published?,October 2011,October 2011,1,1.0
+Oracle Context + Grounded,grounded,How many times prios has the Sun Life Stadium had Super Bowls?,10.,Not enough information.,0,0.0
+Oracle Context + Grounded,grounded,What does Kitab Rudjdjar mean in English?,The Book of Roger,The Book of Roger,1,1.0
+Oracle Context + Grounded,grounded,"Name one country that banned boating, driving and flying on Sundays.",Germany,"The UK, Germany, Italy, Switzerland and Norway",0,0.25
+Oracle Context + Grounded,grounded,For how long did the plague stick around?,until the 19th century,Not enough information.,0,0.0
+Oracle Context + Grounded,grounded,What channels were removed from the network in March of 2007?,basic channels,basic channels,1,1.0
+Oracle Context + Grounded,grounded,How many total touchdowns did Cam Newton score?,45,45,1,1.0
+Oracle Context + Grounded,grounded,How many original treaties establishing the EU protected fundamental rights?,None,None,1,1.0
+Oracle Context + Grounded,grounded,What did BSkyB name their interactive service?,Sky Active,Open....,0,0.0
+Oracle Context + Grounded,grounded,How many inhabitants does the Los Angeles area contain?,12 million,12 million,1,1.0
+Oracle Context + Grounded,grounded,During what period did the Tower Theatre re-open?,late 1970s,late 1970s,1,1.0
+Oracle Context + Grounded,grounded,What did Warsz own?,a village,A village,1,1.0
+Oracle Context + Grounded,grounded,Who formed the government in Kenya?,Kenya African National Union (KANU) of Jomo Kenyatta,Kenya African National Union (KANU) of Jomo Kenyatta,1,1.0
+Oracle Context + Grounded,grounded,What tool has measured the amount of dust that travels from the Sahara to the Amazon?,NASA's CALIPSO satellite,NASA's CALIPSO satellite,1,1.0
+Oracle Context + Grounded,grounded,Who sacked Newton with 11 seconds left in the first half?,DeMarcus Ware,DeMarcus Ware,1,1.0
+Oracle Context + Grounded,grounded,What was the hymn meant to examine students on?,specific catechism questions,Catchism questions,0,0.4
+Oracle Context + Grounded,grounded,"In Nepalese private schools, what is the primary language of instruction?",English,Nepali,0,0.0
+Oracle Context + Grounded,grounded,What topic do private bills typically have?,large-scale development projects,large-scale development projects,1,1.0
+Oracle Context + Grounded,grounded,To where did Ethelred flee?,Normandy,Normandy,1,1.0
+Oracle Context + Grounded,grounded,What future Revolutionary key figures participated in this attack?,Washington and Thomas Gage,Washington and Thomas Gage,1,1.0
+Oracle Context + Grounded,grounded,What style of lace is erroneously believed by some to have Huguenot influence?,'Bucks Point',Mechlin,0,0.0
+Oracle Context + Grounded,grounded,What did the number of legions in Roman times depend on?,threat of war,whether a state or threat of war existed,0,0.5454545454545454
+Oracle Context + Grounded,grounded,Before dinner what were Tesla's working hours?,9:00 a.m. until 6:00 p.m. or later,9:00 a.m. until 6:00 p.m. or later,1,1.0
+Oracle Context + Grounded,grounded,What house was the site of a weaving school in Canterbury?,The Weavers,The Weavers,1,1.0
+Oracle Context + Grounded,grounded,What is strongly linked to good student-teacher relationships?,student motivation and attitudes towards school,student motivation and attitudes towards school,1,1.0
+Oracle Context + Grounded,grounded,What does the First Company Law Directive article 11 require?,incorporations would only be nullified for a fixed list of reasons,incorporations would only be nullified for a fixed list of reasons,1,1.0
+Oracle Context + Grounded,grounded,What are two examples of cytotoxic or immunosuppressive drugs?,methotrexate or azathioprine,Methotrexate or azathioprine,1,1.0
+Oracle Context + Grounded,grounded,What caused the need for principal Treaties that ended up forming the EU?,"common rules for coal and steel, and then atomic energy","coal and steel, and then atomic energy",0,0.8235294117647058
+Oracle Context + Grounded,grounded,Who originally led the Space Task Group?,Robert R. Gilruth,Robert R. Gilruth,1,1.0
+Oracle Context + Grounded,grounded,Which female anchor from Today joined Hugh Downs on 20/20?,Barbara Walters,Barbara Walters,1,1.0
+Oracle Context + Grounded,grounded,What is the estimate for the amount of tree species in the amazon tropical rain forest?,"16,000 species","390 billion individual trees divided into 16,000 species.",0,0.4
+Oracle Context + Grounded,grounded,What type of homes is Fresno known for?,early twentieth century homes,early twentieth century homes,1,1.0
+Oracle Context + Grounded,grounded,What team had the best start ever in the NFL?,Carolina Panthers,Carolina Panthers,1,1.0
+Oracle Context + Grounded,grounded,Which organic compounds contain the greatest amount of oxygen by mass?,carbohydrates,carbohydrates,1,1.0
+Oracle Context + Grounded,grounded,What did Stiglitz present in 2009 regarding global inequality?,evidence,Evidence,1,1.0
+Oracle Context + Grounded,grounded,Of what hollywood film company was UPT a subsidiary of when it merged with ABC?,Paramount Pictures,Paramount Pictures,1,1.0
+Oracle Context + Grounded,grounded,When did the NFL announce that it would not use Roman numbers to designate the Super Bowl number?,"June 4, 2014","June 4, 2014",1,1.0
+Oracle Context + Grounded,grounded,How many Huguenots were killed in Toulouse?,"Nearly 3,000","Nearly 3,000 Protestants were slaughtered in Toulouse alone.",0,0.4
+Oracle Context + Grounded,grounded,What is 'grey literature'?,non-peer-reviewed sources,Non-peer-reviewed sources,1,1.0
+Oracle Context + Grounded,grounded,What's the name of Newcastle's speedway team?,Newcastle Diamonds,Newcastle Diamonds,1,1.0
+Oracle Context + Grounded,grounded,What was the main reason for the show's suspension in 1989?,Its late 1980s performance of three to five million viewers,performance of three to five million viewers,0,0.8235294117647058
+Oracle Context + Grounded,grounded,What is the name of the port city that was created?,Mombasa,Mombasa,1,1.0
+Oracle Context + Grounded,grounded,When did Martin Luther receive his Doctor of Theology?,19 October 1512,19 October 1512,1,1.0
+Oracle Context + Grounded,grounded,Which phylum is more complex than sponges?,Ctenophores,Ctenophores,1,1.0
+Oracle Context + Grounded,grounded,What other scientist influence Frank Burnet when he was formulating his theory of immunity?,Niels Jerne,Niels Jerne,1,1.0
+Oracle Context + Grounded,grounded,How many volumes are contained in the library?,18 million volumes,18 million,0,0.8
+Oracle Context + Grounded,grounded,What does co-teaching get the students to focus on?,learning,Learning,1,1.0
+Oracle Context + Grounded,grounded,Of what mountain system are the Victorian Alps a part?,Great Dividing Range,Great Dividing Range,1,1.0
+Oracle Context + Grounded,grounded,What body part did Thomas Davis break during the NFC Championship Game?,arm,Arm,1,1.0
+Oracle Context + Grounded,grounded,"Whose First Law of Motion says that unless acted upon be forces, objects would continue to move at a constant velocity?",Newton,Newton,1,1.0
+Oracle Context + Grounded,grounded,How was scarcity managed in many countries?,rationing,rationing,1,1.0
+Oracle Context + Grounded,grounded,Where did the residents of Antioch flee to?,The city's residents fled to the north,north,0,0.25
+Oracle Context + Grounded,grounded,How many of the remaining launches were successful?,Five,Five,1,1.0
+Oracle Context + Grounded,grounded,How do co-teachers work with each other to fulfill the needs of students?,harmoniously,Create a climate of learning.,0,0.0
+Oracle Context + Grounded,grounded,What creatures were the most popular monsters in the series?,The Daleks (a.k.a. The Mutants),aliens,0,0.0
+Oracle Context + Grounded,grounded,Who did Britain exploit in India?,the Mughal state,Mughal state,0,0.8
+Oracle Context + Grounded,grounded,Who runs the University of Chicago?,a board of trustees,Board of trustees,0,0.8571428571428571
+Oracle Context + Grounded,grounded,"Hormones can alter the sensitivity of the immune system, so they can be referred to as what?",immunomodulators,immunomodulators,1,1.0
+Oracle Context + Grounded,grounded,How much did Levi's Stadium cost?,$1.2 billion,$1.2 billion,1,1.0
+Oracle Context + Grounded,grounded,How many times has the South Florida/Miami area hosted the Super Bowl?,10,10,1,1.0
+Oracle Context + Grounded,grounded,How much of the population is Hindu?,"around 300,000","300,000",0,0.6666666666666666
+Oracle Context + Grounded,grounded,When did the formation of the Holocene Rhine-Meuse delta begin?,"8,000 years ago","8,000 years ago",1,1.0
+Oracle Context + Grounded,grounded,Which university has its origins in a school dealing with medicine and surgery?,Newcastle University,Newcastle University,1,1.0
+Oracle Context + Grounded,grounded,How much carbon gets wasted by using O2 instead of CO2?,up to half the carbon fixed by the Calvin cycle,half,0,0.18181818181818182
+Oracle Context + Grounded,grounded,Where was Marin's second fort constructed?,"Fort Le Boeuf (present-day Waterford, Pennsylvania",Fort Le Boeuf,0,0.6666666666666666
+Oracle Context + Grounded,grounded,Where can a tribute to the fall of Warsaw be found?,Warsaw Uprising Museum,Warsaw Uprising Museum,1,1.0
+Oracle Context + Grounded,grounded,On what service could the ESPN Deportes broadcast be streamed?,WatchESPN,WatchESPN,1,1.0
+Oracle Context + Grounded,grounded,What characteristic identifies the French ancestry of some South Africans?,surnames,surnames,1,1.0
+Oracle Context + Grounded,grounded,What was the naval base called?,Dyrrachium,Not enough information.,0,0.0
+Oracle Context + Grounded,grounded,How much did Tesla sell his AC patents to Westinghouse Electric for?,"$216,000","$216,000",1,1.0
+Oracle Context + Grounded,grounded,How is income determined in a market with variously skilled workers?,marginal value added of each economic actor,marginal value added,0,0.6
+Oracle Context + Grounded,grounded,What has caused China to suspend their railway project?,environmental and social problems,environmental and social problems,1,1.0
+Oracle Context + Grounded,grounded,What did Watt add to Newcomen's engine between 1763 and 1775?,condenser,Condenser,1,1.0
+Oracle Context + Grounded,grounded,What kind of light is important for chloroplasts to divide?,bright white light,Bright white light,1,1.0
+Oracle Context + Grounded,grounded,What are the only states where ABC doesn't have a licensed affiliate?,"New Jersey, Rhode Island and Delaware","New Jersey, Rhode Island and Delaware",1,1.0
+Oracle Context + Grounded,grounded,Which Count did the Prince strike an arrangement with?,Count Ludwig von Nassau-Saarbrücken,Ludwig von Nassau-Saarbrücken,0,0.8571428571428571
+Oracle Context + Grounded,grounded,From what project did the Apollo 11 crew consist entirely of?,Gemini,G,0,0.0
+Oracle Context + Grounded,grounded,When did Zhu Shijie die?,1314,1314,1,1.0
+Oracle Context + Grounded,grounded,What was the civil disobedience performed at the test site?,tempted to enter the test site,Not enough information.,0,0.0
+Oracle Context + Grounded,grounded,What is another term for the pivot mounting?,trunnion,Not enough information.,0,0.0
+Oracle Context + Grounded,grounded,Who did the Broncos tie with the most sacks in a Super Bowl?,Chicago Bears,Chicago Bears,1,1.0
+Oracle Context + Grounded,grounded,What power is available to Australian private schools but generally not present in public schools?,expulsion,Expulsion,1,1.0
+Oracle Context + Grounded,grounded,What has the tendency to increase wages in a field or job position?,Competition amongst workers,Competition amongst employers,0,0.6666666666666666
+Oracle Context + Grounded,grounded,What Chinese system did Kublai's government compromise with?,traditional Chinese autocratic-bureaucratic system,autocratic-bureaucratic system,0,0.6666666666666666
+Oracle Context + Grounded,grounded,What is tuition for 2012 - 13 year at Harvard? ,"$38,000","$38,000",1,1.0
+Oracle Context + Grounded,grounded,How many tons of live plants were found to live in one square kilometer of the Amazon rainforest in 1999?,"90,790 tonnes","90,790",0,0.6666666666666666
+Oracle Context + Grounded,grounded,When was consumption inequality lower than it had been in 1986?,2001,2001,1,1.0
+Oracle Context + Grounded,grounded,On what date did the first railway trip in the world occur?,21 February 1804,21 February 1804,1,1.0
+Oracle Context + Grounded,grounded,When did the Yuan begin using bronze printing plates for its money?,1275,1275,1,1.0
+Oracle Context + Grounded,grounded,Who ends up getting more of the teacher's resources in this scenario?,motivated students,Motivated students,1,1.0
+Oracle Context + Grounded,grounded,Who made their Super Bowl commercial debut with Nintendo?,The Pokémon Company,Not enough information.,0,0.0
+Oracle Context + Grounded,grounded,Which Treaty protects the freedom of establishment and the freedom to provide services?,the Treaty on the Functioning of the European Union,Not enough information.,0,0.0
+Oracle Context + Grounded,grounded,Constitutional impasse is different from civil disobedience because does not include what type of person?,citizen's,Not enough information.,0,0.0
+Oracle Context + Grounded,grounded,"While producing oxygen, what gas does a zeolite sieve absorb?",nitrogen,nitrogen,1,1.0
+Oracle Context + Grounded,grounded,What element makes up almost half of the earth's crust by mass?,Oxygen,Oxygen,1,1.0
+Oracle Context + Grounded,grounded,Why do carotenoids make leaves change color in the fall?,their bright colors sometimes override the chlorophyll green,They help transfer and dissipate excess energy,0,0.0
+Oracle Context + Grounded,grounded,What plants don't need light to make chloroplasts?,Gymnosperms,Gymnosperms,1,1.0
+Oracle Context + Grounded,grounded,Where can the Treatise be found?,Nikola Tesla Museum archive,Nikola Tesla Museum archive in Belgrade,0,0.8
+Oracle Context + Grounded,grounded,Who was given the highlights of most of the matches?,BBC,The BBC,0,0.6666666666666666
+Oracle Context + Grounded,grounded,Where does the Rhine begin? ,Swiss canton,Swiss canton of Graubünden,0,0.6666666666666666
+Oracle Context + Grounded,grounded,ABC had secondary status on the existing stations in what Ohio town?,Youngstown,Youngstown,1,1.0
+Oracle Context + Grounded,grounded,What did this help accomplish?,the subsequent interrogation led to a better understanding of the Mau Mau command structure,The capture of Warhi Itote (aka General China) on 15 January 1954 and the subsequent interrogation led to a better understanding of the Mau Mau command structure.,0,0.6829268292682926
+Oracle Context + Grounded,grounded,How many large public parks does Fresno have?,three,three,1,1.0
+Oracle Context + Grounded,grounded,Who was an important early figure in the Islamic revival in India?,Sayyid Abul Ala Maududi,Sayyid Abul Ala Maududi,1,1.0
+Oracle Context + Grounded,grounded,Why was the 36 acres leased?,for the George W. Bush Presidential Library,George W. Bush Presidential Library,0,0.8333333333333333
+Oracle Context + Grounded,grounded,Who did BSkyB compete with initially?,ONdigital,ONdigital,1,1.0
+Oracle Context + Grounded,grounded,What is an interdenominational group composed of various churches to promote the Gospel throughout the world?,World Methodist Council,World Methodist Council,1,1.0
+Oracle Context + Grounded,grounded,Who won Super Bowl XLIX?,New England Patriots,New England Patriots,1,1.0
+Oracle Context + Grounded,grounded,How many people died of plague in Paris in 1466?,"40,000","40,000",1,1.0
+Oracle Context + Grounded,grounded,What service is a VideoGuard UK equipped receiver dedicated to decrypt?,Sky,Not enough information.,0,0.0
+Oracle Context + Grounded,grounded,How much did Capital Cities Communications purchase ABC and its properties for?,$3.5 billion,$3.5 billion,1,1.0
+Oracle Context + Grounded,grounded,Who else did DATNET 1 refer to ,public PAD service Telepad (using the DNIC 2049,Telepad,0,0.2222222222222222
+Oracle Context + Grounded,grounded,What do all member states agree takes precedence over national law?,EU law,EU law,1,1.0
+Oracle Context + Grounded,grounded,What is the Scottish Parliament currently in the fourth of?,Session,Not enough information.,0,0.0
+Oracle Context + Grounded,grounded,Who did the Broncos prevent from going to the Super Bowl?,New England Patriots,New England Patriots,1,1.0
+Oracle Context + Grounded,grounded,What monarchy did western troops protect?,Saudi,Saudi,1,1.0
+Oracle Context + Grounded,grounded,Who broadcast the Super Bowl on TV?,CBS,CBS,1,1.0
+Oracle Context + Grounded,grounded,Long-lived memory cells can remember previous encounters with what?,specific pathogen,pathogen,0,0.6666666666666666
+Oracle Context + Grounded,grounded,The UMC supports federal funding for research on embryos created for what purpose?,IVF,IVF,1,1.0
+Oracle Context + Grounded,grounded,When was Mueller announced and appointed as Deputy Associate Administrator?,"July 23, 1963","July 23, 1963",1,1.0
+Oracle Context + Grounded,grounded,What year did the the case go before the supreme court?,1978,1978,1,1.0
+Oracle Context + Grounded,grounded,What is the name of the winter festival held in January that is based on fitness? ,Kuviasungnerk/Kangeiko,Kuviasungnerk/Kangeiko,1,1.0
+Oracle Context + Grounded,grounded,Which Germans could understand the language Luther used?,northern and southern,northern and southern Germans,0,0.8571428571428571
+Oracle Context + Grounded,grounded,What is the eukaryotic parasite responsible for malaria known as?,Plasmodium falciparum,Plasmodium falciparum,1,1.0
+Oracle Context + Grounded,grounded,What health issue did Tesla suffer?,nervous breakdown,Nervous breakdown,1,1.0
+Oracle Context + Grounded,grounded,What types of medications do specialty pharmacies stock?,"novel medications that need to be properly stored, administered, carefully monitored, and clinically managed","injectable, oral, infused, or inhaled",0,0.0
+Oracle Context + Grounded,grounded,What is a local pastor's official title?,Licensed Local Pastor,Licensed Local Pastor,1,1.0
+Oracle Context + Grounded,grounded,What is another term for Tesla's visualization ability?,picture thinking,picture thinking,1,1.0
+Oracle Context + Grounded,grounded,What is the process of changing light into chemical energy?,photosynthesis,photosynthesis,1,1.0
+Oracle Context + Grounded,grounded,What are the biggest burdens?,"diseases like malaria, HIV/AIDS, pneumonia, diarrhoea and malnutrition","Preventable diseases like malaria, HIV/AIDS, pneumonia, diarrhoea and malnutrition",0,0.9411764705882353
+Oracle Context + Grounded,grounded,What two comedies were featured on ABC's new Wednesday comedy lineup?,The Middle and Modern Family,The Middle and Modern Family,1,1.0
+Oracle Context + Grounded,grounded,Some species of beroe have a pair of strips of adhesive cells on the stomach wall. What does it do?,"zip"" the mouth shut when the animal is not feeding,",Zip the mouth shut,0,0.5714285714285715
+Oracle Context + Grounded,grounded,Who did the Mongols bring to China as administrators?,Central Asian Muslims,Central Asian Muslims,1,1.0
+Oracle Context + Grounded,grounded,What author argues pitching the conscience versus the collective?,Thoreau,Thoreau,1,1.0
+Oracle Context + Grounded,grounded,"One of the sites, Merceds-Benz Superdome, is located where?",New Orleans,New Orleans,1,1.0
+Oracle Context + Grounded,grounded,What is the edcuation system currently?,8–4–4 system,8–4–4 system,1,1.0
+Oracle Context + Grounded,grounded,How many different species of ctenohore are there?,100–150 species,100–150,0,0.6666666666666666
+Oracle Context + Grounded,grounded,When was Johann Tetzel sent by the Roman Catholic Church to Germany to sell indulgences?,1516,1516,1,1.0
+Oracle Context + Grounded,grounded,Who were the Westwood One sideline announcers?,James Lofton and Mark Malone,James Lofton and Mark Malone,1,1.0
+Oracle Context + Grounded,grounded,Which border does the Rhine flow from the south?,Swiss-Austrian border,Swiss-Austrian border,1,1.0
+Oracle Context + Grounded,grounded,What happened to the East India Trading Company in 1767?,exploitation,plundering of the local economy,0,0.0
+Oracle Context + Grounded,grounded,Who was Kennedy's vice president?,Lyndon B. Johnson,Lyndon B. Johnson,1,1.0
+Oracle Context + Grounded,grounded,What company created Doctor Who?,BBC Television,BBC Television,1,1.0
+Oracle Context + Grounded,grounded,"Other than the motion picture and television industry, what other major industry is centered in Los Angeles?",music,music,1,1.0
+Oracle Context + Grounded,grounded,The UMC established and is affiliated with approximately how many colleges and universities in the U.S.?,one hundred,Around one hundred,0,0.8
+Oracle Context + Grounded,grounded,What happened to his lab?,His lab was torn down,It was torn down,0,0.6666666666666665
+Oracle Context + Grounded,grounded,When did Sunday Night Football premiere on NBC?,2006,2006,1,1.0
+Oracle Context + Grounded,grounded,What was the final score for Super Bowl XXXIII?,34–19,34–19,1,1.0
+Oracle Context + Grounded,grounded,The amount of land a country controls is its greatest what?,distinction,distinction,1,1.0
+Oracle Context + Grounded,grounded,"What additional srevice did BSkyB offer besides HD channels that they claimed offered ""substantially more value""?",Video On Demand,Video On Demand content,0,0.8571428571428571
+Oracle Context + Grounded,grounded,What types of preparation do pharmacists have?,specialised education and training,Not enough information.,0,0.0
+Oracle Context + Short Grounded,short_grounded,In what year did Massachusetts first require children to be educated in schools?,1852,1852,1,1.0
+Oracle Context + Short Grounded,short_grounded,When were stromules discovered?,1962,1962,1,1.0
+Oracle Context + Short Grounded,short_grounded,Which artist who had a major influence on the Gothic Revival is represented in the V&A's British galleries?,Horace Walpole,Horace Walpole,1,1.0
+Oracle Context + Short Grounded,short_grounded,"In 1890, who did the university decide to team up with?",several regional colleges and universities,"Des Moines College, Kalamazoo College, Butler University, and Stetson University",0,0.13333333333333333
+Oracle Context + Short Grounded,short_grounded,Who got a touchdown making the score 10-7?,Jonathan Stewart,Jonathan Stewart,1,1.0
+Oracle Context + Short Grounded,short_grounded,How many Examination Boards exist in India?,30,30,1,1.0
+Oracle Context + Short Grounded,short_grounded,Who started rumors in 2008 that ABC would sell its ten owned-and-operated stations?,Caris & Co.,Caris & Co.,1,1.0
+Oracle Context + Short Grounded,short_grounded,Which network broadcasted the 50th Super Bowl game? ,CBS,CBS,1,1.0
+Oracle Context + Short Grounded,short_grounded,Why was this short termed organization created?,coordinate the response to the embargo,to coordinate the response to the embargo,0,0.923076923076923
+Oracle Context + Short Grounded,short_grounded,What does LGM stands for?,Last Glacial Maximum,Last Glacial Maximum,1,1.0
+Oracle Context + Short Grounded,short_grounded,What is the paper written by Richard Karp in 1972 that ushered in a new era of understanding between intractability and NP-complete problems?,"""Reducibility Among Combinatorial Problems""",Reducibility Among Combinatorial Problems,1,1.0
+Oracle Context + Short Grounded,short_grounded,What Lake in a German island Mainau receives a fraction of the Rhine's flow?,Lake Überlingen,Lake Überlingen,1,1.0
+Oracle Context + Short Grounded,short_grounded,What studio does ABC own at 1500 Broadway in NYC?,Times Square Studios,Times Square Studios,1,1.0
+Oracle Context + Short Grounded,short_grounded,How many fraternities are apart of the university?,fifteen,fifteen,1,1.0
+Oracle Context + Short Grounded,short_grounded,At what address did Goldenson secure a new headquarters for ABC?,1330 Avenue of the Americas in Manhattan,1330 Avenue of the Americas,0,0.8333333333333333
+Oracle Context + Short Grounded,short_grounded,Who had established the Russian empire to its former glory prior to 1921?,Bolshevik leaders,Bolshevik leaders,1,1.0
+Oracle Context + Short Grounded,short_grounded,What does the Riemann hypothesis state the source of irregularity in the distribution of points comes from?,random noise,Random noise,1,1.0
+Oracle Context + Short Grounded,short_grounded,Which work of Luther's is effective in teaching children?,Small Catechism,Small Catechism,1,1.0
+Oracle Context + Short Grounded,short_grounded,How was the civil disobedience shown in Antigone?,obey her conscience rather than human law,One of the oldest depictions,0,0.0
+Oracle Context + Short Grounded,short_grounded,Where do juvenile platyctenids live?,among the plankton,among the plankton,1,1.0
+Oracle Context + Short Grounded,short_grounded,How often are elections held for the Victorian Parliament?,every four years,Elections for the Victorian Parliament are now fixed and occur in November every four years.,0,0.33333333333333337
+Oracle Context + Short Grounded,short_grounded,What magnetic and electric force acts on a charge?,unified electromagnetic,Electrostatic force,0,0.0
+Oracle Context + Short Grounded,short_grounded,What kinds of growth did Kublai encourage?,"commercial, scientific, and cultural","commercial, scientific, and cultural",1,1.0
+Oracle Context + Short Grounded,short_grounded,What was the name of the first episode of the new Doctor Who series?,Rose,Rose,1,1.0
+Oracle Context + Short Grounded,short_grounded,Each of the extended metropolitan areas has a population that exceeds what number?,five million,five million,1,1.0
+Oracle Context + Short Grounded,short_grounded,Why is giving a defiant speech sometimes more harmful for the individual?,lack of remorse,Not enough information.,0,0.0
+Oracle Context + Short Grounded,short_grounded,When were Joseph Schumpeter and Norman Angell at their most prolific writing period?,before World War I,Before World War I,1,1.0
+Oracle Context + Short Grounded,short_grounded,How do competing businesses attract workers?,offering a higher wage,by offering a higher wage the best of their labor,0,0.5714285714285715
+Oracle Context + Short Grounded,short_grounded,How many teams up to Super Bowl 50 have been to the championship game eight times?,four,Four,1,1.0
+Oracle Context + Short Grounded,short_grounded,What plants create most electric power?,steam turbine,steam turbine,1,1.0
+Oracle Context + Short Grounded,short_grounded,The epidemic in Newcastle was the most what in any British city at the time?,devastating loss,devastating loss,1,1.0
+Oracle Context + Short Grounded,short_grounded,"What additional srevice did BSkyB offer besides Video on Demand that they claimed offered ""substantially more value""?",HD channels,HD channels,1,1.0
+Oracle Context + Short Grounded,short_grounded,Who did Tesla think would run the world of the future?,women,Queen Bees,0,0.0
+Oracle Context + Short Grounded,short_grounded,What have many HT members graduated to joining?,terrorist groups,terrorist groups,1,1.0
+Oracle Context + Short Grounded,short_grounded,Approximately how many items are in the costume collection of the V&A?,"over 14,000","over 14,000 outfits plus accessories",0,0.5714285714285715
+Oracle Context + Short Grounded,short_grounded,Which park is home to the Fresno Chafffee Zoo?,Roeding Park,Roeding Park,1,1.0
+Oracle Context + Short Grounded,short_grounded,The point at which different radiometric isotopes stop diffusing into and out of the crystal lattice is called what?,particular closure temperature,The amount of time that has passed since a rock passed through its particular closure temperature,0,0.3157894736842105
+Oracle Context + Short Grounded,short_grounded,What could someone be investigated for?,allegations of professional misconduct,Professional misconduct,0,0.6666666666666666
+Oracle Context + Short Grounded,short_grounded,What are examples of economic actors?,"worker, capitalist/business owner, landlord","worker, capitalist/business owner, landlord",1,1.0
+Oracle Context + Short Grounded,short_grounded,What field involves the study of the immune system?,Immunology,Immunology,1,1.0
+Oracle Context + Short Grounded,short_grounded,What are the phagocytes that are located in tissues in contact with the external environment called?,Dendritic cells,Dendritic cells,1,1.0
+Oracle Context + Short Grounded,short_grounded,What did the merchants of Newcastle plot to do to Timothy Dexter?,ruin him,ruin him,1,1.0
+Oracle Context + Short Grounded,short_grounded,What job did Tesla's father have in Gospic?,pastor,Pastor,1,1.0
+Oracle Context + Short Grounded,short_grounded,Which hotel did the Panthers stay at for the Super Bowl?,San Jose Marriott.,San Jose Marriott,1,1.0
+Oracle Context + Short Grounded,short_grounded,What are other alternative names for French and Indian War?,Fourth Intercolonial War and the Great War for the Empire,Fourth Intercolonial War and the Great War for the Empire,1,1.0
+Oracle Context + Short Grounded,short_grounded,"Outside of its use of automobiles, what else is southern California famous for using?",highways,highways,1,1.0
+Oracle Context + Short Grounded,short_grounded,What was the last name of the designers of Newcastle's library?,Green,Green,1,1.0
+Oracle Context + Short Grounded,short_grounded,How many people were on the test flight of the AS-206?,unmanned,Not enough information,0,0.0
+Oracle Context + Short Grounded,short_grounded,What is the state average growth rate?,10.0%,10.0%,1,1.0
+Oracle Context + Short Grounded,short_grounded,When was the study on sequenced Y genomes published?,October 2011,October 2011,1,1.0
+Oracle Context + Short Grounded,short_grounded,How many times prios has the Sun Life Stadium had Super Bowls?,10.,10,1,1.0
+Oracle Context + Short Grounded,short_grounded,What does Kitab Rudjdjar mean in English?,The Book of Roger,The Book of Roger,1,1.0
+Oracle Context + Short Grounded,short_grounded,"Name one country that banned boating, driving and flying on Sundays.",Germany,"The UK, Germany, Italy, Switzerland and Norway",0,0.25
+Oracle Context + Short Grounded,short_grounded,For how long did the plague stick around?,until the 19th century,19th century,0,0.6666666666666666
+Oracle Context + Short Grounded,short_grounded,What channels were removed from the network in March of 2007?,basic channels,basic channels,1,1.0
+Oracle Context + Short Grounded,short_grounded,How many total touchdowns did Cam Newton score?,45,45,1,1.0
+Oracle Context + Short Grounded,short_grounded,How many original treaties establishing the EU protected fundamental rights?,None,None,1,1.0
+Oracle Context + Short Grounded,short_grounded,What did BSkyB name their interactive service?,Sky Active,Open....,0,0.0
+Oracle Context + Short Grounded,short_grounded,How many inhabitants does the Los Angeles area contain?,12 million,12 million,1,1.0
+Oracle Context + Short Grounded,short_grounded,During what period did the Tower Theatre re-open?,late 1970s,late 1970s,1,1.0
+Oracle Context + Short Grounded,short_grounded,What did Warsz own?,a village,A village,1,1.0
+Oracle Context + Short Grounded,short_grounded,Who formed the government in Kenya?,Kenya African National Union (KANU) of Jomo Kenyatta,Kenya African National Union (KANU) of Jomo Kenyatta,1,1.0
+Oracle Context + Short Grounded,short_grounded,What tool has measured the amount of dust that travels from the Sahara to the Amazon?,NASA's CALIPSO satellite,NASA's CALIPSO satellite,1,1.0
+Oracle Context + Short Grounded,short_grounded,Who sacked Newton with 11 seconds left in the first half?,DeMarcus Ware,DeMarcus Ware,1,1.0
+Oracle Context + Short Grounded,short_grounded,What was the hymn meant to examine students on?,specific catechism questions,Catchism questions,0,0.4
+Oracle Context + Short Grounded,short_grounded,"In Nepalese private schools, what is the primary language of instruction?",English,Nepali,0,0.0
+Oracle Context + Short Grounded,short_grounded,What topic do private bills typically have?,large-scale development projects,large-scale development projects,1,1.0
+Oracle Context + Short Grounded,short_grounded,To where did Ethelred flee?,Normandy,Normandy,1,1.0
+Oracle Context + Short Grounded,short_grounded,What future Revolutionary key figures participated in this attack?,Washington and Thomas Gage,Washington and Thomas Gage,1,1.0
+Oracle Context + Short Grounded,short_grounded,What style of lace is erroneously believed by some to have Huguenot influence?,'Bucks Point',Mechlin lace,0,0.0
+Oracle Context + Short Grounded,short_grounded,What did the number of legions in Roman times depend on?,threat of war,whether a state or threat of war existed,0,0.5454545454545454
+Oracle Context + Short Grounded,short_grounded,Before dinner what were Tesla's working hours?,9:00 a.m. until 6:00 p.m. or later,9:00 a.m. until 6:00 p.m. or later,1,1.0
+Oracle Context + Short Grounded,short_grounded,What house was the site of a weaving school in Canterbury?,The Weavers,The Weavers,1,1.0
+Oracle Context + Short Grounded,short_grounded,What is strongly linked to good student-teacher relationships?,student motivation and attitudes towards school,student motivation and attitudes towards school,1,1.0
+Oracle Context + Short Grounded,short_grounded,What does the First Company Law Directive article 11 require?,incorporations would only be nullified for a fixed list of reasons,incorporations would only be nullified for a fixed list of reasons,1,1.0
+Oracle Context + Short Grounded,short_grounded,What are two examples of cytotoxic or immunosuppressive drugs?,methotrexate or azathioprine,Methotrexate or azathioprine,1,1.0
+Oracle Context + Short Grounded,short_grounded,What caused the need for principal Treaties that ended up forming the EU?,"common rules for coal and steel, and then atomic energy","coal and steel, and then atomic energy",0,0.8235294117647058
+Oracle Context + Short Grounded,short_grounded,Who originally led the Space Task Group?,Robert R. Gilruth,Robert R. Gilruth,1,1.0
+Oracle Context + Short Grounded,short_grounded,Which female anchor from Today joined Hugh Downs on 20/20?,Barbara Walters,Barbara Walters,1,1.0
+Oracle Context + Short Grounded,short_grounded,What is the estimate for the amount of tree species in the amazon tropical rain forest?,"16,000 species","390 billion individual trees divided into 16,000 species.",0,0.4
+Oracle Context + Short Grounded,short_grounded,What type of homes is Fresno known for?,early twentieth century homes,early twentieth century homes,1,1.0
+Oracle Context + Short Grounded,short_grounded,What team had the best start ever in the NFL?,Carolina Panthers,Carolina Panthers,1,1.0
+Oracle Context + Short Grounded,short_grounded,Which organic compounds contain the greatest amount of oxygen by mass?,carbohydrates,carbohydrates,1,1.0
+Oracle Context + Short Grounded,short_grounded,What did Stiglitz present in 2009 regarding global inequality?,evidence,Evidence,1,1.0
+Oracle Context + Short Grounded,short_grounded,Of what hollywood film company was UPT a subsidiary of when it merged with ABC?,Paramount Pictures,Paramount Pictures,1,1.0
+Oracle Context + Short Grounded,short_grounded,When did the NFL announce that it would not use Roman numbers to designate the Super Bowl number?,"June 4, 2014","June 4, 2014",1,1.0
+Oracle Context + Short Grounded,short_grounded,How many Huguenots were killed in Toulouse?,"Nearly 3,000","Nearly 3,000 Protestants were slaughtered in Toulouse alone.",0,0.4
+Oracle Context + Short Grounded,short_grounded,What is 'grey literature'?,non-peer-reviewed sources,Non-peer-reviewed sources,1,1.0
+Oracle Context + Short Grounded,short_grounded,What's the name of Newcastle's speedway team?,Newcastle Diamonds,Newcastle Diamonds,1,1.0
+Oracle Context + Short Grounded,short_grounded,What was the main reason for the show's suspension in 1989?,Its late 1980s performance of three to five million viewers,"Its late 1980s performance of three to five million viewers was seen as poor at the time and was, according to the BBC Board of Control, a leading cause of the programme's 1989 suspension.",0,0.45454545454545453
+Oracle Context + Short Grounded,short_grounded,What is the name of the port city that was created?,Mombasa,Mombasa,1,1.0
+Oracle Context + Short Grounded,short_grounded,When did Martin Luther receive his Doctor of Theology?,19 October 1512,19 October 1512,1,1.0
+Oracle Context + Short Grounded,short_grounded,Which phylum is more complex than sponges?,Ctenophores,Ctenophores,1,1.0
+Oracle Context + Short Grounded,short_grounded,What other scientist influence Frank Burnet when he was formulating his theory of immunity?,Niels Jerne,Niels Jerne,1,1.0
+Oracle Context + Short Grounded,short_grounded,How many volumes are contained in the library?,18 million volumes,18 million,0,0.8
+Oracle Context + Short Grounded,short_grounded,What does co-teaching get the students to focus on?,learning,learning,1,1.0
+Oracle Context + Short Grounded,short_grounded,Of what mountain system are the Victorian Alps a part?,Great Dividing Range,Great Dividing Range,1,1.0
+Oracle Context + Short Grounded,short_grounded,What body part did Thomas Davis break during the NFC Championship Game?,arm,Arm,1,1.0
+Oracle Context + Short Grounded,short_grounded,"Whose First Law of Motion says that unless acted upon be forces, objects would continue to move at a constant velocity?",Newton,Newton,1,1.0
+Oracle Context + Short Grounded,short_grounded,How was scarcity managed in many countries?,rationing,rationing,1,1.0
+Oracle Context + Short Grounded,short_grounded,Where did the residents of Antioch flee to?,The city's residents fled to the north,north,0,0.25
+Oracle Context + Short Grounded,short_grounded,How many of the remaining launches were successful?,Five,Five,1,1.0
+Oracle Context + Short Grounded,short_grounded,How do co-teachers work with each other to fulfill the needs of students?,harmoniously,Create a climate of learning.,0,0.0
+Oracle Context + Short Grounded,short_grounded,What creatures were the most popular monsters in the series?,The Daleks (a.k.a. The Mutants),Not enough information.,0,0.0
+Oracle Context + Short Grounded,short_grounded,Who did Britain exploit in India?,the Mughal state,Mughal state,0,0.8
+Oracle Context + Short Grounded,short_grounded,Who runs the University of Chicago?,a board of trustees,Board of trustees,0,0.8571428571428571
+Oracle Context + Short Grounded,short_grounded,"Hormones can alter the sensitivity of the immune system, so they can be referred to as what?",immunomodulators,immunomodulators,1,1.0
+Oracle Context + Short Grounded,short_grounded,How much did Levi's Stadium cost?,$1.2 billion,$1.2 billion,1,1.0
+Oracle Context + Short Grounded,short_grounded,How many times has the South Florida/Miami area hosted the Super Bowl?,10,10,1,1.0
+Oracle Context + Short Grounded,short_grounded,How much of the population is Hindu?,"around 300,000","300,000",0,0.6666666666666666
+Oracle Context + Short Grounded,short_grounded,When did the formation of the Holocene Rhine-Meuse delta begin?,"8,000 years ago","8,000 years ago",1,1.0
+Oracle Context + Short Grounded,short_grounded,Which university has its origins in a school dealing with medicine and surgery?,Newcastle University,Newcastle University,1,1.0
+Oracle Context + Short Grounded,short_grounded,How much carbon gets wasted by using O2 instead of CO2?,up to half the carbon fixed by the Calvin cycle,half,0,0.18181818181818182
+Oracle Context + Short Grounded,short_grounded,Where was Marin's second fort constructed?,"Fort Le Boeuf (present-day Waterford, Pennsylvania",Fort Le Boeuf,0,0.6666666666666666
+Oracle Context + Short Grounded,short_grounded,Where can a tribute to the fall of Warsaw be found?,Warsaw Uprising Museum,Warsaw Uprising Museum,1,1.0
+Oracle Context + Short Grounded,short_grounded,On what service could the ESPN Deportes broadcast be streamed?,WatchESPN,WatchESPN,1,1.0
+Oracle Context + Short Grounded,short_grounded,What characteristic identifies the French ancestry of some South Africans?,surnames,surnames,1,1.0
+Oracle Context + Short Grounded,short_grounded,What was the naval base called?,Dyrrachium,Dyrrachium,1,1.0
+Oracle Context + Short Grounded,short_grounded,How much did Tesla sell his AC patents to Westinghouse Electric for?,"$216,000","$216,000",1,1.0
+Oracle Context + Short Grounded,short_grounded,How is income determined in a market with variously skilled workers?,marginal value added of each economic actor,marginal value added,0,0.6
+Oracle Context + Short Grounded,short_grounded,What has caused China to suspend their railway project?,environmental and social problems,environmental and social problems,1,1.0
+Oracle Context + Short Grounded,short_grounded,What did Watt add to Newcomen's engine between 1763 and 1775?,condenser,a separate condenser,0,0.5
+Oracle Context + Short Grounded,short_grounded,What kind of light is important for chloroplasts to divide?,bright white light,Bright white light,1,1.0
+Oracle Context + Short Grounded,short_grounded,What are the only states where ABC doesn't have a licensed affiliate?,"New Jersey, Rhode Island and Delaware","New Jersey, Rhode Island and Delaware",1,1.0
+Oracle Context + Short Grounded,short_grounded,Which Count did the Prince strike an arrangement with?,Count Ludwig von Nassau-Saarbrücken,Ludwig von Nassau-Saarbrücken,0,0.8571428571428571
+Oracle Context + Short Grounded,short_grounded,From what project did the Apollo 11 crew consist entirely of?,Gemini,The G mission,0,0.0
+Oracle Context + Short Grounded,short_grounded,When did Zhu Shijie die?,1314,1314,1,1.0
+Oracle Context + Short Grounded,short_grounded,What was the civil disobedience performed at the test site?,tempted to enter the test site,Not enough information,0,0.0
+Oracle Context + Short Grounded,short_grounded,What is another term for the pivot mounting?,trunnion,Trunnion,1,1.0
+Oracle Context + Short Grounded,short_grounded,Who did the Broncos tie with the most sacks in a Super Bowl?,Chicago Bears,Chicago Bears,1,1.0
+Oracle Context + Short Grounded,short_grounded,What power is available to Australian private schools but generally not present in public schools?,expulsion,Expulsion,1,1.0
+Oracle Context + Short Grounded,short_grounded,What has the tendency to increase wages in a field or job position?,Competition amongst workers,Competition amongst employers,0,0.6666666666666666
+Oracle Context + Short Grounded,short_grounded,What Chinese system did Kublai's government compromise with?,traditional Chinese autocratic-bureaucratic system,autocratic-bureaucratic system,0,0.6666666666666666
+Oracle Context + Short Grounded,short_grounded,What is tuition for 2012 - 13 year at Harvard? ,"$38,000","$38,000",1,1.0
+Oracle Context + Short Grounded,short_grounded,How many tons of live plants were found to live in one square kilometer of the Amazon rainforest in 1999?,"90,790 tonnes","90,790",0,0.6666666666666666
+Oracle Context + Short Grounded,short_grounded,When was consumption inequality lower than it had been in 1986?,2001,2001,1,1.0
+Oracle Context + Short Grounded,short_grounded,On what date did the first railway trip in the world occur?,21 February 1804,21 February 1804,1,1.0
+Oracle Context + Short Grounded,short_grounded,When did the Yuan begin using bronze printing plates for its money?,1275,1275,1,1.0
+Oracle Context + Short Grounded,short_grounded,Who ends up getting more of the teacher's resources in this scenario?,motivated students,Motivated students,1,1.0
+Oracle Context + Short Grounded,short_grounded,Who made their Super Bowl commercial debut with Nintendo?,The Pokémon Company,The Pokémon Company,1,1.0
+Oracle Context + Short Grounded,short_grounded,Which Treaty protects the freedom of establishment and the freedom to provide services?,the Treaty on the Functioning of the European Union,The Grand Chamber of the Court of Justice held that a requirement for lawyers in Italy to comply with maximum tariffs unless there was an agreement with a client was not a restriction.,0,0.14285714285714288
+Oracle Context + Short Grounded,short_grounded,Constitutional impasse is different from civil disobedience because does not include what type of person?,citizen's,private citizen,0,0.0
+Oracle Context + Short Grounded,short_grounded,"While producing oxygen, what gas does a zeolite sieve absorb?",nitrogen,nitrogen,1,1.0
+Oracle Context + Short Grounded,short_grounded,What element makes up almost half of the earth's crust by mass?,Oxygen,Oxygen,1,1.0
+Oracle Context + Short Grounded,short_grounded,Why do carotenoids make leaves change color in the fall?,their bright colors sometimes override the chlorophyll green,They help transfer and dissipate excess energy,0,0.0
+Oracle Context + Short Grounded,short_grounded,What plants don't need light to make chloroplasts?,Gymnosperms,Gymnosperms,1,1.0
+Oracle Context + Short Grounded,short_grounded,Where can the Treatise be found?,Nikola Tesla Museum archive,Nikola Tesla Museum archive in Belgrade,0,0.8
+Oracle Context + Short Grounded,short_grounded,Who was given the highlights of most of the matches?,BBC,The BBC,0,0.6666666666666666
+Oracle Context + Short Grounded,short_grounded,Where does the Rhine begin? ,Swiss canton,in the Swiss canton of Graubünden,0,0.5
+Oracle Context + Short Grounded,short_grounded,ABC had secondary status on the existing stations in what Ohio town?,Youngstown,Youngstown,1,1.0
+Oracle Context + Short Grounded,short_grounded,What did this help accomplish?,the subsequent interrogation led to a better understanding of the Mau Mau command structure,a better understanding of the Mau Mau command structure,0,0.782608695652174
+Oracle Context + Short Grounded,short_grounded,How many large public parks does Fresno have?,three,three,1,1.0
+Oracle Context + Short Grounded,short_grounded,Who was an important early figure in the Islamic revival in India?,Sayyid Abul Ala Maududi,Sayyid Abul Ala Maududi,1,1.0
+Oracle Context + Short Grounded,short_grounded,Why was the 36 acres leased?,for the George W. Bush Presidential Library,George W. Bush Presidential Library,0,0.8333333333333333
+Oracle Context + Short Grounded,short_grounded,Who did BSkyB compete with initially?,ONdigital,ONdigital,1,1.0
+Oracle Context + Short Grounded,short_grounded,What is an interdenominational group composed of various churches to promote the Gospel throughout the world?,World Methodist Council,World Methodist Council,1,1.0
+Oracle Context + Short Grounded,short_grounded,Who won Super Bowl XLIX?,New England Patriots,New England Patriots,1,1.0
+Oracle Context + Short Grounded,short_grounded,How many people died of plague in Paris in 1466?,"40,000","40,000",1,1.0
+Oracle Context + Short Grounded,short_grounded,What service is a VideoGuard UK equipped receiver dedicated to decrypt?,Sky,Sky,1,1.0
+Oracle Context + Short Grounded,short_grounded,How much did Capital Cities Communications purchase ABC and its properties for?,$3.5 billion,$3.5 billion,1,1.0
+Oracle Context + Short Grounded,short_grounded,Who else did DATNET 1 refer to ,public PAD service Telepad (using the DNIC 2049,Telepad,0,0.2222222222222222
+Oracle Context + Short Grounded,short_grounded,What do all member states agree takes precedence over national law?,EU law,EU law,1,1.0
+Oracle Context + Short Grounded,short_grounded,What is the Scottish Parliament currently in the fourth of?,Session,Session,1,1.0
+Oracle Context + Short Grounded,short_grounded,Who did the Broncos prevent from going to the Super Bowl?,New England Patriots,New England Patriots,1,1.0
+Oracle Context + Short Grounded,short_grounded,What monarchy did western troops protect?,Saudi,Saudi,1,1.0
+Oracle Context + Short Grounded,short_grounded,Who broadcast the Super Bowl on TV?,CBS,CBS,1,1.0
+Oracle Context + Short Grounded,short_grounded,Long-lived memory cells can remember previous encounters with what?,specific pathogen,pathogen,0,0.6666666666666666
+Oracle Context + Short Grounded,short_grounded,The UMC supports federal funding for research on embryos created for what purpose?,IVF,IVF,1,1.0
+Oracle Context + Short Grounded,short_grounded,When was Mueller announced and appointed as Deputy Associate Administrator?,"July 23, 1963","July 23, 1963",1,1.0
+Oracle Context + Short Grounded,short_grounded,What year did the the case go before the supreme court?,1978,1978,1,1.0
+Oracle Context + Short Grounded,short_grounded,What is the name of the winter festival held in January that is based on fitness? ,Kuviasungnerk/Kangeiko,Kuviasungnerk/Kangeiko,1,1.0
+Oracle Context + Short Grounded,short_grounded,Which Germans could understand the language Luther used?,northern and southern,northern and southern Germans,0,0.8571428571428571
+Oracle Context + Short Grounded,short_grounded,What is the eukaryotic parasite responsible for malaria known as?,Plasmodium falciparum,Plasmodium falciparum,1,1.0
+Oracle Context + Short Grounded,short_grounded,What health issue did Tesla suffer?,nervous breakdown,Nervous breakdown,1,1.0
+Oracle Context + Short Grounded,short_grounded,What types of medications do specialty pharmacies stock?,"novel medications that need to be properly stored, administered, carefully monitored, and clinically managed","injectable, oral, infused, or inhaled",0,0.0
+Oracle Context + Short Grounded,short_grounded,What is a local pastor's official title?,Licensed Local Pastor,Licensed Local Pastor,1,1.0
+Oracle Context + Short Grounded,short_grounded,What is another term for Tesla's visualization ability?,picture thinking,picture thinking,1,1.0
+Oracle Context + Short Grounded,short_grounded,What is the process of changing light into chemical energy?,photosynthesis,Photosynthesis,1,1.0
+Oracle Context + Short Grounded,short_grounded,What are the biggest burdens?,"diseases like malaria, HIV/AIDS, pneumonia, diarrhoea and malnutrition","Preventable diseases like malaria, HIV/AIDS, pneumonia, diarrhoea and malnutrition",0,0.9411764705882353
+Oracle Context + Short Grounded,short_grounded,What two comedies were featured on ABC's new Wednesday comedy lineup?,The Middle and Modern Family,The Middle and Modern Family,1,1.0
+Oracle Context + Short Grounded,short_grounded,Some species of beroe have a pair of strips of adhesive cells on the stomach wall. What does it do?,"zip"" the mouth shut when the animal is not feeding,",Zip the mouth shut,0,0.5714285714285715
+Oracle Context + Short Grounded,short_grounded,Who did the Mongols bring to China as administrators?,Central Asian Muslims,Central Asian Muslims,1,1.0
+Oracle Context + Short Grounded,short_grounded,What author argues pitching the conscience versus the collective?,Thoreau,Thoreau,1,1.0
+Oracle Context + Short Grounded,short_grounded,"One of the sites, Merceds-Benz Superdome, is located where?",New Orleans,New Orleans,1,1.0
+Oracle Context + Short Grounded,short_grounded,What is the edcuation system currently?,8–4–4 system,8–4–4 system,1,1.0
+Oracle Context + Short Grounded,short_grounded,How many different species of ctenohore are there?,100–150 species,100–150,0,0.6666666666666666
+Oracle Context + Short Grounded,short_grounded,When was Johann Tetzel sent by the Roman Catholic Church to Germany to sell indulgences?,1516,1516,1,1.0
+Oracle Context + Short Grounded,short_grounded,Who were the Westwood One sideline announcers?,James Lofton and Mark Malone,James Lofton and Mark Malone,1,1.0
+Oracle Context + Short Grounded,short_grounded,Which border does the Rhine flow from the south?,Swiss-Austrian border,Swiss-Austrian border,1,1.0
+Oracle Context + Short Grounded,short_grounded,What happened to the East India Trading Company in 1767?,exploitation,plundering of the local economy,0,0.0
+Oracle Context + Short Grounded,short_grounded,Who was Kennedy's vice president?,Lyndon B. Johnson,Lyndon B. Johnson,1,1.0
+Oracle Context + Short Grounded,short_grounded,What company created Doctor Who?,BBC Television,BBC Television,1,1.0
+Oracle Context + Short Grounded,short_grounded,"Other than the motion picture and television industry, what other major industry is centered in Los Angeles?",music,music,1,1.0
+Oracle Context + Short Grounded,short_grounded,The UMC established and is affiliated with approximately how many colleges and universities in the U.S.?,one hundred,Around one hundred,0,0.8
+Oracle Context + Short Grounded,short_grounded,What happened to his lab?,His lab was torn down,It was torn down,0,0.6666666666666665
+Oracle Context + Short Grounded,short_grounded,When did Sunday Night Football premiere on NBC?,2006,2006,1,1.0
+Oracle Context + Short Grounded,short_grounded,What was the final score for Super Bowl XXXIII?,34–19,34–19,1,1.0
+Oracle Context + Short Grounded,short_grounded,The amount of land a country controls is its greatest what?,distinction,distinction,1,1.0
+Oracle Context + Short Grounded,short_grounded,"What additional srevice did BSkyB offer besides HD channels that they claimed offered ""substantially more value""?",Video On Demand,Video On Demand content,0,0.8571428571428571
+Oracle Context + Short Grounded,short_grounded,What types of preparation do pharmacists have?,specialised education and training,education and training,0,0.8571428571428571
