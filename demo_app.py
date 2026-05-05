@@ -213,9 +213,18 @@ def generate_answer(prompt, max_new_tokens=128):
 # 7. Demo function
 # =========================
 
+def find_gold_answer(question):
+    matched = df[df["question"].str.strip().str.lower() == question.strip().lower()]
+
+    if len(matched) > 0:
+        return matched.iloc[0]["answer"]
+
+    return "No gold answer available for this custom question."
+
+
 def rag_demo(question):
     if question.strip() == "":
-        return "Please enter a question.", ""
+        return "Please enter a question.", "", ""
 
     retrieved = retrieve_hybrid_reranked(
         query=question,
@@ -226,15 +235,16 @@ def rag_demo(question):
     contexts = retrieved["text"].tolist()
     prompt = build_grounded_prompt(question, contexts)
     answer = generate_answer(prompt)
+    gold_answer = find_gold_answer(question)
 
     evidence_blocks = []
 
     for rank, (_, row) in enumerate(retrieved.iterrows(), start=1):
         evidence_blocks.append(
             f"""### Passage {rank}
-**Source:** {row["source"]}  
-**Retrieval score:** {row["score"]:.4f}  
-**Hybrid score:** {row.get("hybrid_score", 0):.4f}  
+**Source:** {row["source"]}
+**Retrieval score:** {row["score"]:.4f}
+**Hybrid score:** {row.get("hybrid_score", 0):.4f}
 **Rerank score:** {row["rerank_score"]:.4f}
 
 {row["text"]}
@@ -243,7 +253,7 @@ def rag_demo(question):
 
     evidence_text = "\n\n---\n\n".join(evidence_blocks)
 
-    return answer, evidence_text
+    return answer, gold_answer, evidence_text
 
 
 # =========================
@@ -260,14 +270,16 @@ demo = gr.Interface(
     ),
     outputs=[
         gr.Textbox(label="Generated Answer"),
+        gr.Textbox(label="Gold Answer"),
         gr.Markdown(label="Retrieved Evidence")
     ],
     title="RAG Faithfulness Demo",
     description=(
         "This demo uses Hybrid Retrieval + Reciprocal-Rank Candidate Merging "
         "+ Cross-Encoder Reranking + Grounded Prompting. "
-        "It retrieves relevant passages from a shuffled SQuAD-based document collection "
-        "and generates an answer using the retrieved evidence."
+        "It retrieves relevant passages from a shuffled SQuAD-based document collection, "
+        "generates an answer using the retrieved evidence, and displays the gold answer "
+        "when the input question comes from the SQuAD subset."
     ),
     examples=example_questions
 )
