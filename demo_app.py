@@ -223,37 +223,45 @@ def find_gold_answer(question):
 
 
 def rag_demo(question):
-    if question.strip() == "":
-        return "Please enter a question.", "", ""
+    try:
+        if question is None or question.strip() == "":
+            return "Please enter a question.", "", ""
 
-    retrieved = retrieve_hybrid_reranked(
-        query=question,
-        top_k=5,
-        pool_k=20
-    )
+        retrieved = retrieve_hybrid_reranked(
+            query=question,
+            top_k=5,
+            pool_k=20
+        )
 
-    contexts = retrieved["text"].tolist()
-    prompt = build_grounded_prompt(question, contexts)
-    answer = generate_answer(prompt)
-    gold_answer = find_gold_answer(question)
+        contexts = retrieved["text"].tolist()
+        prompt = build_grounded_prompt(question, contexts)
+        answer = generate_answer(prompt)
+        gold_answer = find_gold_answer(question)
 
-    evidence_blocks = []
+        evidence_blocks = []
 
-    for rank, (_, row) in enumerate(retrieved.iterrows(), start=1):
-        evidence_blocks.append(
-            f"""### Passage {rank}
-**Source:** {row["source"]}
-**Retrieval score:** {row["score"]:.4f}
-**Hybrid score:** {row.get("hybrid_score", 0):.4f}
+        for rank, (_, row) in enumerate(retrieved.iterrows(), start=1):
+            evidence_blocks.append(
+                f"""### Passage {rank}
+**Source:** {row["source"]}  
+**Retrieval score:** {row["score"]:.4f}  
+**Hybrid score:** {row.get("hybrid_score", 0):.4f}  
 **Rerank score:** {row["rerank_score"]:.4f}
 
 {row["text"]}
 """
+            )
+
+        evidence_text = "\n\n---\n\n".join(evidence_blocks)
+
+        return answer, gold_answer, evidence_text
+
+    except Exception as e:
+        return (
+            "An error occurred while running the RAG pipeline.",
+            "No gold answer available.",
+            f"Error details: {str(e)}"
         )
-
-    evidence_text = "\n\n---\n\n".join(evidence_blocks)
-
-    return answer, gold_answer, evidence_text
 
 
 # =========================
