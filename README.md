@@ -322,6 +322,70 @@ Future improvements could include:
 - evaluating on more realistic long-document or open-domain QA datasets,
 - improving hybrid retrieval with learned retrieval fusion or score calibration.
 
+## Running Basic Tests
+
+This repository does not include a full production-level test suite, but the saved result files can be checked with basic validation tests. These checks are useful for confirming that the main experiment outputs were generated and saved correctly.
+
+Recommended checks include:
+
+- confirming that the result CSV files exist,
+- confirming that the result tables are not empty,
+- confirming that expected columns such as `config_name`, `em`, `f1`, `faithfulness_label`, and `error_type` are present.
+
+If a `tests/` folder is added, basic tests can be run with:
+
+```bash
+pip install pytest
+pytest tests/
+```
+
+## Troubleshooting
+
+### The demo takes a long time to start
+
+The first run may take several minutes because the app downloads pretrained models from Hugging Face and builds the FAISS retrieval index. This is expected behavior.
+
+### CUDA is not available
+
+The code automatically falls back to CPU if CUDA is unavailable. However, running the generator and reranker on CPU will be slower. For faster execution, use Google Colab with GPU enabled.
+
+### FAISS installation error
+
+If `faiss-cpu` fails to install, try upgrading pip first:
+
+```bash
+pip install --upgrade pip
+pip install faiss-cpu
+```
+
+### Hugging Face model download issues
+
+If model downloads fail, rerun the cell or restart the runtime. The models used are:
+
+```text
+sentence-transformers/all-MiniLM-L6-v2
+cross-encoder/ms-marco-MiniLM-L-6-v2
+google/flan-t5-base
+```
+
+### Gradio link does not open
+
+If the public Gradio link does not open, rerun:
+
+```bash
+python demo_app.py
+```
+
+or restart the runtime and run the app again.
+
+### Notebook results differ slightly
+
+Some results may differ slightly depending on hardware, package versions, or random seeds. The dataset shuffle uses `seed=42`, and saved result CSV files are included in the `results/` folder for reference.
+
+### Out-of-memory error
+
+If the notebook runs out of memory, reduce the evaluation sizes in the notebook. For example, answer generation can be evaluated on fewer questions because generation is more computationally expensive than retrieval.
+
 ## Authors
 
 - Joseph Yeung
