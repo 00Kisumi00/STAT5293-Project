@@ -12,3 +12,4 @@ torch
 gradio
 evaluate
 rouge-score
+pytest
