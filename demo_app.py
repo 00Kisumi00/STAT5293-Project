@@ -1,4 +1,5 @@
 
+import re
 import numpy as np
 import pandas as pd
 import gradio as gr
@@ -179,6 +180,7 @@ def build_grounded_prompt(question, contexts):
     return f"""
 You must answer the question only using the provided context.
 If the answer is not supported by the context, say "Not enough information."
+Return a concise answer.
 
 Context:
 {context_text}
@@ -190,7 +192,7 @@ Grounded answer:
 """
 
 
-def generate_answer(prompt, max_new_tokens=128):
+def generate_answer(prompt, max_new_tokens=64):
     inputs = tokenizer(
         prompt,
         return_tensors="pt",
@@ -210,8 +212,15 @@ def generate_answer(prompt, max_new_tokens=128):
 
 
 # =========================
-# 7. Demo function
+# 7. Demo utilities
 # =========================
+
+def normalize_text(text):
+    text = str(text).lower().strip()
+    text = re.sub(r"[^a-z0-9\s]", " ", text)
+    text = re.sub(r"\s+", " ", text)
+    return text
+
 
 def find_gold_answer(question):
     matched = df[df["question"].str.strip().str.lower() == question.strip().lower()]
@@ -222,10 +231,90 @@ def find_gold_answer(question):
     return "No gold answer available for this custom question."
 
 
+def inspect_case(answer, gold_answer, contexts):
+    answer_norm = normalize_text(answer)
+    gold_norm = normalize_text(gold_answer)
+    retrieved_text_norm = normalize_text(" ".join(contexts))
+
+    has_gold = (
+        gold_answer != "No gold answer available for this custom question."
+        and gold_norm != ""
+        and gold_norm in retrieved_text_norm
+    )
+
+    is_refusal = (
+        "not enough information" in answer_norm
+        or "cannot answer" in answer_norm
+        or "not provided" in answer_norm
+    )
+
+    answer_contains_gold = (
+        gold_answer != "No gold answer available for this custom question."
+        and gold_norm != ""
+        and gold_norm in answer_norm
+    )
+
+    if has_gold:
+        gold_status = "Yes — the gold answer appears in the retrieved evidence."
+    else:
+        gold_status = "No exact gold answer match found in the retrieved evidence."
+
+    if is_refusal and has_gold:
+        diagnosis = (
+            "Likely over-refusal: the retrieved evidence appears to contain the gold answer, "
+            "but the model still refused to answer."
+        )
+    elif is_refusal and not has_gold:
+        diagnosis = (
+            "Likely retrieval or context-selection failure: the model refused, and the exact gold answer "
+            "was not found in the retrieved evidence."
+        )
+    elif answer_contains_gold:
+        diagnosis = (
+            "Likely successful case: the generated answer contains the gold answer string."
+        )
+    elif has_gold:
+        diagnosis = (
+            "Possible generation or formatting issue: the retrieved evidence contains the gold answer, "
+            "but the generated answer does not exactly match it."
+        )
+    else:
+        diagnosis = (
+            "Possible retrieval failure, wrong answer, or paraphrase: the exact gold answer was not found "
+            "in the retrieved evidence."
+        )
+
+    inspection_note = f"""
+### Faithfulness Inspection
+
+**Gold answer found in retrieved evidence:** {gold_status}
+
+**Generated answer type:** {"Refusal / abstention" if is_refusal else "Non-refusal answer"}
+
+**Automatic diagnosis:** {diagnosis}
+
+**How to read this demo:** Retrieval scores measure passage relevance, not answer correctness.  
+A high rerank score means the passage is likely relevant to the question, but the generator can still fail to extract the exact answer span.
+"""
+
+    return gold_status, inspection_note
+
+
+# =========================
+# 8. Demo function
+# =========================
+
 def rag_demo(question):
     try:
         if question is None or question.strip() == "":
-            return "Please enter a question.", "", ""
+            return (
+                "Please enter a question.",
+                "",
+                "",
+                pd.DataFrame(),
+                "",
+                ""
+            )
 
         retrieved = retrieve_hybrid_reranked(
             query=question,
@@ -238,11 +327,27 @@ def rag_demo(question):
         answer = generate_answer(prompt)
         gold_answer = find_gold_answer(question)
 
+        gold_status, inspection_note = inspect_case(answer, gold_answer, contexts)
+
+        retrieval_summary = retrieved[[
+            "source",
+            "score",
+            "hybrid_score",
+            "rerank_score"
+        ]].copy()
+
+        retrieval_summary.insert(0, "rank", range(1, len(retrieval_summary) + 1))
+
+        retrieval_summary["score"] = retrieval_summary["score"].round(4)
+        retrieval_summary["hybrid_score"] = retrieval_summary["hybrid_score"].round(4)
+        retrieval_summary["rerank_score"] = retrieval_summary["rerank_score"].round(4)
+
         evidence_blocks = []
 
         for rank, (_, row) in enumerate(retrieved.iterrows(), start=1):
             evidence_blocks.append(
                 f"""### Passage {rank}
+
 **Source:** {row["source"]}  
 **Retrieval score:** {row["score"]:.4f}  
 **Hybrid score:** {row.get("hybrid_score", 0):.4f}  
@@ -254,18 +359,28 @@ def rag_demo(question):
 
         evidence_text = "\n\n---\n\n".join(evidence_blocks)
 
-        return answer, gold_answer, evidence_text
+        return (
+            answer,
+            gold_answer,
+            gold_status,
+            retrieval_summary,
+            inspection_note,
+            evidence_text
+        )
 
     except Exception as e:
         return (
             "An error occurred while running the RAG pipeline.",
             "No gold answer available.",
-            f"Error details: {str(e)}"
+            "Could not inspect retrieved evidence.",
+            pd.DataFrame(),
+            f"Error details: {str(e)}",
+            ""
         )
 
 
 # =========================
-# 8. Gradio app
+# 9. Gradio app
 # =========================
 
 example_questions = df["question"].sample(5, random_state=7).tolist()
@@ -274,22 +389,25 @@ demo = gr.Interface(
     fn=rag_demo,
     inputs=gr.Textbox(
         label="Question",
-        placeholder="Enter a question here..."
+        placeholder="Enter a SQuAD-style question here..."
     ),
     outputs=[
         gr.Textbox(label="Generated Answer"),
         gr.Textbox(label="Gold Answer"),
+        gr.Textbox(label="Gold Answer Found in Retrieved Evidence"),
+        gr.Dataframe(label="Retrieval Scores"),
+        gr.Markdown(label="Faithfulness Inspection Note"),
         gr.Markdown(label="Retrieved Evidence")
     ],
-    title="RAG Faithfulness Demo",
+    title="RAG Faithfulness Inspection Demo",
     description=(
-        "This demo uses Hybrid Retrieval + Reciprocal-Rank Candidate Merging "
-        "+ Cross-Encoder Reranking + Grounded Prompting. "
-        "It retrieves relevant passages from a shuffled SQuAD-based document collection, "
-        "generates an answer using the retrieved evidence, and displays the gold answer "
-        "when the input question comes from the SQuAD subset."
+        "This demo is designed for faithfulness inspection rather than production QA. "
+        "It retrieves evidence using Hybrid Retrieval + Cross-Encoder Reranking, "
+        "generates a grounded answer with FLAN-T5, and displays the generated answer, "
+        "gold answer, retrieval scores, automatic inspection note, and evidence passages."
     ),
-    examples=example_questions
+    examples=example_questions,
+    allow_flagging="never"
 )
 
 
