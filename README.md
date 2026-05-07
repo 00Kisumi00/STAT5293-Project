@@ -1,62 +1,48 @@
-# Improving Faithfulness in RAG
+# Improving Faithfulness in Retrieval-Augmented Generation
 
-This project studies how retrieval, reranking, and prompting strategies affect answer quality and faithfulness in a simple Retrieval-Augmented Generation (RAG) question answering system.
+This project studies how retrieval, reranking, and prompting strategies affect answer quality and faithfulness in a Retrieval-Augmented Generation (RAG) question answering system.
 
-The system uses a shuffled subset of 2,000 SQuAD validation examples as the document collection. It compares BM25 sparse retrieval, dense embedding retrieval, hybrid retrieval, cross-encoder reranking, and multiple prompting strategies.
+The goal is not to train a new model or build a production chatbot. Instead, the project is a controlled comparison of RAG pipeline choices: how evidence is retrieved, how candidate passages are reranked, how prompts constrain generation, and how these choices affect both automatic answer quality and evidence-grounded faithfulness.
 
-## Project Motivation
+## Project Summary
 
-Large language models can generate fluent answers, but they may also produce information that is not supported by evidence. Retrieval-Augmented Generation (RAG) is a common approach for reducing this problem by retrieving relevant passages and using them as context for answer generation.
+We build a simple RAG question answering pipeline using a shuffled subset of 2,000 SQuAD validation examples.
 
-However, final answer quality depends on several design choices:
+The system compares:
 
-- how passages are retrieved,
-- whether retrieved passages are reranked,
-- how the prompt instructs the model to use evidence,
-- and whether the generator can extract the correct answer from the retrieved context.
+- BM25 sparse retrieval
+- Dense retrieval with `sentence-transformers/all-MiniLM-L6-v2`
+- Hybrid retrieval using reciprocal-rank style candidate merging
+- Cross-encoder reranking with `cross-encoder/ms-marco-MiniLM-L-6-v2`
+- Multiple prompting strategies for `google/flan-t5-base`
 
-This project evaluates these design choices in a controlled RAG pipeline.
+The evaluation separates three related but different dimensions:
+
+1. **Evidence access**: whether the retriever finds answer-supporting context.
+2. **Answer quality**: whether the generated answer matches the gold answer.
+3. **Faithfulness**: whether the generated answer is supported by the retrieved evidence.
+
+## Motivation
+
+RAG is commonly used to reduce hallucination by grounding generation in retrieved passages. However, using RAG does not automatically make a model faithful.
+
+A RAG system can fail because:
+
+- the retriever does not find the right evidence,
+- the relevant passage is retrieved but ranked poorly,
+- the prompt contains too much noisy or truncated context,
+- the generator fails to extract the correct answer span,
+- or the grounded prompt makes the model too conservative and causes over-refusal.
+
+This project investigates these failure modes through quantitative metrics, oracle-context evaluation, manual faithfulness review, and a small interactive inspection demo.
 
 ## Research Questions
 
-This project focuses on four main questions:
-
-1. Does the retrieval method affect whether the system finds answer-supporting evidence?
-2. Does cross-encoder reranking improve retrieval quality?
-3. Do grounded prompting strategies improve answer faithfulness?
-4. Which combination of retrieval, reranking, and prompting works best in this simple RAG pipeline?
-
-## Methods
-
-The project compares the following components.
-
-### Retrieval Methods
-
-- **BM25 Retrieval**: sparse keyword-based retrieval baseline.
-- **Dense Retrieval**: semantic retrieval using `sentence-transformers/all-MiniLM-L6-v2`.
-- **Hybrid Retrieval**: combines BM25 and dense retrieval using reciprocal-rank style candidate merging.
-
-### Reranking
-
-- **No Reranking**
-- **Cross-Encoder Reranking** using `cross-encoder/ms-marco-MiniLM-L-6-v2`
-
-### Prompting Strategies
-
-- **Standard Prompt**: asks the model to answer using the retrieved context.
-- **Grounded Prompt**: asks the model to answer only from the retrieved context and say "Not enough information" if unsupported.
-- **Evidence Prompt**: asks the model to answer and identify supporting evidence.
-- **Short-Grounded Prompt**: asks the model to return only the shortest possible answer span.
-
-### Generator
-
-The answer generation model is:
-
-```text
-google/flan-t5-base
-```
-
-This model was selected because it is lightweight enough to run in Google Colab while still supporting instruction-style prompting.
+1. Which retrieval method finds answer-supporting evidence most reliably?
+2. Does cross-encoder reranking improve top-5 evidence access?
+3. Which prompting strategy gives the best answer quality under SQuAD-style evaluation?
+4. Why can strong retrieval fail to produce strong generated answers?
+5. How do automatic metrics and manual faithfulness review differ?
 
 ## Dataset
 
@@ -66,74 +52,134 @@ The project uses a shuffled subset of the SQuAD validation set:
 2,000 validation examples
 ```
 
-The contexts from these examples are used as the document collection. Each context is split into overlapping chunks before retrieval.
+Each example contains:
+
+- `question`
+- `context`
+- `answer`
+
+The contexts are treated as the document collection. Each context is split into overlapping word chunks before retrieval:
+
+```text
+chunk size = 120 words
+overlap = 30 words
+```
+
+SQuAD is useful for this project because it provides gold answers and supporting contexts. However, it is also a limitation because many answers are short extractive spans, so metrics such as Exact Match and F1 favor concise span-style outputs.
+
+## Methodology
+
+### Retrieval
+
+We compare three retrieval methods:
+
+| Method | Description |
+|---|---|
+| BM25 | Sparse lexical retrieval based on keyword overlap |
+| Dense Retrieval | Embedding-based semantic retrieval using MiniLM sentence embeddings |
+| Hybrid Retrieval | Candidate merging from BM25 and dense retrieval using reciprocal-rank style scoring |
+
+The dense retriever uses normalized embeddings and FAISS inner-product search.
+
+### Reranking
+
+For reranked configurations, the system first retrieves a larger candidate pool and then applies a cross-encoder reranker.
+
+The reranker scores each `(question, passage)` pair jointly, then reorders the candidate passages. The final top-5 passages are sent to the generator.
+
+```text
+Retriever candidate pool → Cross-encoder reranker → Final top-5 passages
+```
+
+### Prompting
+
+We compare several prompt styles:
+
+| Prompt Type | Description |
+|---|---|
+| Standard | Answer using the provided context |
+| Grounded | Answer only if supported by context; otherwise say "Not enough information" |
+| Evidence-based | Encourage evidence-like output |
+| Short-grounded | Return the shortest supported answer span |
+
+Short-grounded prompting is especially aligned with SQuAD because gold answers are usually short extractive spans.
+
+### Generator
+
+The generator is fixed across configurations:
+
+```text
+google/flan-t5-base
+```
+
+We use a fixed lightweight open-source model to keep the comparison reproducible and to isolate the effects of retrieval, reranking, and prompting.
 
 ## Evaluation
 
-The project uses both automatic and manual evaluation.
+The project uses automatic metrics, oracle-context diagnostics, manual faithfulness review, and error analysis.
 
-### Automatic Metrics
+### Retrieval Metric
 
-- **Recall@5** for retrieval evaluation
-- **Exact Match (EM)** for answer quality
-- **Token-level F1** for answer quality
+| Metric | Meaning |
+|---|---|
+| Recall@5 | Whether the gold answer string appears in one of the top five retrieved chunks |
 
-### Oracle Context Check
+Recall@5 measures evidence access. It does not guarantee that the generator will produce the correct answer.
 
-In addition to normal RAG evaluation, this project includes an oracle-context diagnostic. In this setting, the generator receives the gold context directly instead of relying on retrieved passages.
+### Answer Quality Metrics
 
-This helps separate:
+| Metric | Meaning |
+|---|---|
+| Exact Match | Whether the generated answer exactly matches the gold answer after normalization |
+| Token F1 | Token-level overlap between generated answer and gold answer |
 
-- retrieval and ranking limitations,
-- prompt construction issues,
-- and the generator's answer extraction ability.
+These metrics are useful for SQuAD-style QA, but they do not fully measure faithfulness.
+
+### Oracle-Context Check
+
+The oracle-context experiment gives the generator the gold context directly instead of retrieved passages.
+
+This diagnostic helps estimate how much performance is lost because of retrieval, context selection, truncation, prompt construction, or evidence use.
 
 ### Manual Faithfulness Review
 
-Since EM and F1 do not directly measure whether an answer is supported by evidence, a small manual review was also conducted.
+A small manual review was conducted to check whether generated answers were supported by retrieved evidence.
 
-Each sampled answer was labeled as:
-
-| Label | Meaning |
+| Score | Meaning |
 |---:|---|
 | 1.0 | Fully supported by retrieved context |
 | 0.5 | Partially supported, incomplete, vague, or overly conservative |
-| 0.0 | Unsupported, incorrect, or hallucinated |
+| 0.0 | Unsupported, incorrect, hallucinated, or failed |
 
-Error types were also recorded, including:
+Manual error types include:
 
 - `over_refusal`
 - `wrong_answer`
 - `correct_supported`
-- `partially_supported`
 - `format_mismatch`
 - `retrieval_failure`
+- `partially_supported`
 
 ## Main Results
 
 ### Retrieval Results
 
-First-stage retrieval was evaluated on 2,000 questions.
+Retrieval was evaluated over the 2,000-example SQuAD validation subset.
 
 | Method | Recall@5 |
 |---|---:|
 | BM25 | 0.7900 |
 | Dense Retrieval | 0.8685 |
 | Hybrid Retrieval | 0.9125 |
-
-Reranked retrieval was evaluated on 1,000 questions.
-
-| Method | Recall@5 |
-|---|---:|
 | BM25 + Rerank | 0.8810 |
 | Dense + Rerank | 0.9370 |
 | Hybrid + Rerank | 0.9730 |
 
-The best retrieval configuration was **Hybrid + Rerank**, with a Recall@5 of **0.9730**.
+The strongest evidence access came from **Hybrid + Rerank**, with Recall@5 = **0.9730**.
 
 ### Answer Generation Results
 
-Answer generation was evaluated on 200 questions across ten RAG configurations.
+Answer generation was evaluated on a smaller generation subset because running the generator across all configurations is computationally expensive.
 
 | Configuration | EM | F1 |
 |---|---:|---:|
@@ -148,24 +194,20 @@ Answer generation was evaluated on 200 questions across ten RAG configurations.
 | BM25 + Rerank + Grounded | 0.025 | 0.041 |
 | BM25 + Grounded | 0.025 | 0.031 |
 
-The best automatic answer quality came from **Dense + Short Grounded**, with an Exact Match score of **0.135** and an F1 score of **0.170**.
+The best automatic answer quality came from **Dense + Short Grounded**, with EM = **0.135** and F1 = **0.170**.
 
-### Oracle Context Results
+This shows that better retrieval does not automatically produce better generated answers. Retrieval provides access to evidence, but the generator still has to extract and format the answer correctly.
 
-The oracle-context experiment gives the model the gold context directly.
+### Oracle-Context Results
 
 | Configuration | EM | F1 |
 |---|---:|---:|
 | Oracle Context + Short Grounded | 0.695 | 0.831 |
 | Oracle Context + Grounded | 0.660 | 0.786 |
 
-The oracle-context results are much higher than the normal RAG generation results. This suggests that the generator can extract correct answers when the right context is clearly provided, but full RAG performance is limited by the combined effects of retrieval, ranking, context selection, prompt length, and prompt construction.
+Oracle-context performance is much higher than normal RAG performance. This suggests that FLAN-T5 can answer many questions when the correct evidence is clearly provided, but the full RAG pipeline is limited by context selection, prompt construction, prompt truncation, and evidence use.
 
 ### Manual Faithfulness Results
-
-In the manual review sample, the highest average faithfulness score was achieved by **Dense + Rerank + Short Grounded**, with an average score of **0.875**.
-
-The next strongest configurations were:
 
 | Configuration | Manual Faithfulness Score |
 |---|---:|
@@ -180,41 +222,90 @@ The next strongest configurations were:
 | Dense + Grounded | 0.250 |
 | BM25 + Standard | 0.000 |
 
-The most common error type was **over-refusal**, where the model answered "Not enough information" even when the retrieved context often contained enough evidence. This shows that grounded prompting may reduce hallucination, but it can also make the model overly conservative.
+The strongest manual faithfulness score came from **Dense + Rerank + Short Grounded**.
+
+The most common manual error type was **over-refusal**, where the model says "Not enough information" even though the retrieved evidence contains enough information to answer. This shows a tradeoff: grounded prompting can reduce unsupported generation, but it can also make the model too conservative.
 
 ## Key Findings
 
-The main findings are:
+1. **Hybrid + Rerank maximized evidence access.**  
+   It achieved the strongest Recall@5.
 
-1. **Hybrid retrieval performed best among first-stage retrieval methods.**
-2. **Cross-encoder reranking improved Recall@5 and produced the strongest retrieval configuration.**
-3. **Short-grounded prompting improved answer quality by encouraging concise answer spans.**
-4. **Strong retrieval did not automatically lead to strong generated answers.**
-5. **Oracle-context results show that context selection and prompt construction are major bottlenecks.**
-6. **Manual faithfulness review is necessary because EM and F1 do not fully measure evidence support.**
+2. **Best retrieval did not produce the best EM/F1.**  
+   Strong retrieval improves evidence access, but generation quality still depends on prompt construction and evidence use.
+
+3. **Short-grounded prompting worked best for SQuAD-style answer quality.**  
+   SQuAD answers are usually short extractive spans, so concise answer prompting aligns better with EM/F1.
+
+4. **Manual faithfulness and EM/F1 diverged.**  
+   EM/F1 measure string overlap, while faithfulness measures evidence support.
+
+5. **Oracle-context results showed a large RAG pipeline gap.**  
+   When the correct context was directly provided, generation quality was much higher.
+
+6. **Over-refusal was the most common manual error type.**  
+   Grounded prompting made the model more conservative, sometimes too conservative.
+
+## Demo
+
+The Gradio demo is designed as a **RAG faithfulness inspection tool**, not a production chatbot.
+
+The intended user is a RAG developer or evaluator who wants to inspect whether generated answers are supported by retrieved evidence.
+
+The demo shows:
+
+- generated answer,
+- gold answer when available,
+- whether the gold answer appears in retrieved evidence,
+- retrieval scores,
+- automatic faithfulness diagnosis,
+- retrieved evidence passages.
+
+The prepared demo examples include:
+
+1. an **over-refusal failure case**, where the retrieved evidence contains the gold answer but the model says "Not enough information";
+2. a **successful grounded-answer case**, where the generated answer contains the gold answer and is supported by retrieved evidence.
+
+The bottom of the demo interface also includes a short guide explaining how to adapt the demo to another QA corpus by replacing the dataset-loading block with a custom table containing `question`, `context`, and `answer` columns.
+
+### Run the Demo
+
+```bash
+python demo_app.py
+```
+
+The first run may take several minutes because pretrained models are downloaded and the retrieval index is built.
 
 ## Repository Structure
 
 ```text
-rag-faithfulness-project/
+STAT5293-Project/
 ├── README.md
 ├── requirements.txt
 ├── demo_app.py
 ├── 5293_Final_Project.ipynb
+├── test_basic_pipeline.py
 │
-├── results/
-│   ├── answer_quality_summary.csv
-│   ├── manual_faithfulness_review_labeled.csv
-│   ├── oracle_context_results.csv
-│   ├── oracle_context_summary.csv
-│   ├── rag_generation_results.csv
-│   ├── representative_error_cases.csv
-│   └── selected_error_cases.csv
+├── figures/
+│   ├── retrieval_performance_comparison.png
+│   ├── answer_quality_comparison.png
+│   └── manual_faithfulness_comparison.png
 │
-└── figures/
-    ├── retrieval_performance_comparison.png
-    ├── answer_quality_comparison.png
-    └── manual_faithfulness_comparison.png
+└── results/
+    ├── answer_quality_summary.csv
+    ├── manual_faithfulness_review_labeled.csv
+    ├── oracle_context_results.csv
+    ├── oracle_context_summary.csv
+    ├── rag_generation_results.csv
+    ├── representative_error_cases.csv
+    └── selected_error_cases.csv
+```
+
+If a recorded demo video is included, it can be placed under:
+
+```text
+demo/
+└── rag_faithfulness_demo.mp4
 ```
 
 ## Setup
@@ -225,7 +316,7 @@ Install dependencies:
 pip install -r requirements.txt
 ```
 
-The main dependencies are:
+Main dependencies include:
 
 ```text
 numpy
@@ -244,6 +335,8 @@ evaluate
 rouge-score
 ```
 
+For faster execution, GPU runtime is recommended.
+
 ## Running the Experiments
 
 Open the notebook:
@@ -256,102 +349,85 @@ The notebook includes:
 
 1. dataset loading,
 2. document chunking,
-3. BM25 retrieval,
-4. dense retrieval,
-5. hybrid retrieval,
-6. cross-encoder reranking,
-7. prompting strategies,
-8. answer generation,
-9. automatic evaluation,
-10. oracle-context evaluation,
-11. visualization,
-12. manual faithfulness review,
-13. error analysis,
-14. conclusion and future work.
+3. retrieval index construction,
+4. BM25 retrieval,
+5. dense retrieval,
+6. hybrid retrieval,
+7. cross-encoder reranking,
+8. prompt construction,
+9. FLAN-T5 answer generation,
+10. automatic evaluation,
+11. oracle-context evaluation,
+12. visualization,
+13. manual faithfulness review,
+14. error analysis,
+15. conclusion and future work.
 
 The notebook was designed to run in Google Colab.
 
-## Running the Demo
+## Basic Tests
 
-Run the Gradio demo:
-
-```bash
-python demo_app.py
-```
-
-The demo launches a web interface where users can enter a question. The system then:
-
-1. retrieves passages using hybrid retrieval,
-2. applies cross-encoder reranking,
-3. generates a grounded answer,
-4. displays the gold answer when available,
-5. displays the retrieved evidence.
-
-The demo uses:
+This repository includes a basic validation script:
 
 ```text
-Hybrid Retrieval + Reciprocal-Rank Candidate Merging + Cross-Encoder Reranking + Grounded Prompting
+test_basic_pipeline.py
 ```
 
-The first run may take several minutes because the pretrained models must be downloaded and the retrieval index must be built.
+It checks that key result files exist and contain expected columns, including:
 
-## Demo Notes
+- `config_name`
+- `em`
+- `f1`
+- `faithfulness_label`
+- `error_type`
 
-The demo is intended to show the full RAG workflow rather than serve as a production system. It allows users to inspect the generated answer, the gold answer when available, and the retrieved evidence. This is useful for evaluating whether the answer is faithful to the retrieved context.
+Run the tests with:
+
+```bash
+pip install pytest
+pytest
+```
+
+These tests are not a full production test suite, but they help verify that the saved experiment outputs are present and readable.
 
 ## Limitations
 
 This project has several limitations:
 
-- The dataset is based on SQuAD, where answers are usually short text spans.
-- EM and F1 may penalize answers that are semantically reasonable but do not exactly match the gold answer.
-- The generator model, `google/flan-t5-base`, is lightweight but not as capable as larger instruction-tuned models.
-- The manual faithfulness review uses a small sample and should be interpreted as qualitative evidence.
-- The hybrid retrieval method is simple and could be improved with better score normalization or learned fusion.
+- The dataset is based on SQuAD, where answers are usually short extractive spans.
+- EM and F1 may penalize faithful answers that do not exactly match the gold string.
+- The generator model, `google/flan-t5-base`, is lightweight and less capable than larger instruction-tuned models.
+- Manual faithfulness review is based on a small sample and should be interpreted as qualitative diagnostic evidence.
+- The hybrid retrieval method uses simple rank-based merging rather than learned fusion.
 - The demo builds the retrieval index at startup, so the first run may be slow.
+- The evaluation is not a production benchmark and does not claim state-of-the-art RAG performance.
 
 ## Future Work
 
 Future improvements could include:
 
-- using a stronger generator model,
-- improving prompt construction to prioritize the most relevant evidence,
-- reducing prompt truncation effects,
-- expanding manual faithfulness review to more examples,
-- using multiple annotators for manual evaluation,
-- evaluating on more realistic long-document or open-domain QA datasets,
-- improving hybrid retrieval with learned retrieval fusion or score calibration.
-
-## Running Basic Tests
-
-This repository does not include a full production-level test suite, but the saved result files can be checked with basic validation tests. These checks are useful for confirming that the main experiment outputs were generated and saved correctly.
-
-Recommended checks include:
-
-- confirming that the result CSV files exist,
-- confirming that the result tables are not empty,
-- confirming that expected columns such as `config_name`, `em`, `f1`, `faithfulness_label`, and `error_type` are present.
-
-If a `tests/` folder is added, basic tests can be run with:
-
-```bash
-pip install pytest
-pytest tests/
-```
+- tuning refusal behavior to reduce over-refusal,
+- improving context construction and passage ordering,
+- adding citation or span extraction to force more direct grounding,
+- expanding manual faithfulness review,
+- using multiple annotators and reporting inter-annotator agreement,
+- evaluating on more realistic multi-document or open-domain QA datasets,
+- improving hybrid retrieval with learned fusion or score calibration,
+- testing stronger generator models.
 
 ## Troubleshooting
 
 ### The demo takes a long time to start
 
-The first run may take several minutes because the app downloads pretrained models from Hugging Face and builds the FAISS retrieval index. This is expected behavior.
+The first run downloads pretrained models from Hugging Face and builds the FAISS retrieval index. This is expected.
 
 ### CUDA is not available
 
-The code automatically falls back to CPU if CUDA is unavailable. However, running the generator and reranker on CPU will be slower. For faster execution, use Google Colab with GPU enabled.
+The code falls back to CPU automatically, but generation and reranking will be slower.
 
 ### FAISS installation error
 
-If `faiss-cpu` fails to install, try upgrading pip first:
+Try upgrading pip first:
 
 ```bash
 pip install --upgrade pip
@@ -360,7 +436,7 @@ pip install faiss-cpu
 
 ### Hugging Face model download issues
 
-If model downloads fail, rerun the cell or restart the runtime. The models used are:
+Restart the runtime and rerun the app or notebook. The models used are:
 
 ```text
 sentence-transformers/all-MiniLM-L6-v2
@@ -368,27 +444,22 @@ cross-encoder/ms-marco-MiniLM-L-6-v2
 google/flan-t5-base
 ```
 
-### Gradio link does not open
+### Notebook rendering error on GitHub
 
-If the public Gradio link does not open, rerun:
+If GitHub reports a notebook widget metadata error, remove the `metadata.widgets` field from the notebook JSON and re-upload the cleaned notebook.
 
-```bash
-python demo_app.py
-```
+### Results differ slightly
 
-or restart the runtime and run the app again.
-
-### Notebook results differ slightly
-
-Some results may differ slightly depending on hardware, package versions, or random seeds. The dataset shuffle uses `seed=42`, and saved result CSV files are included in the `results/` folder for reference.
+Some results may differ slightly depending on hardware, package versions, and runtime settings. The dataset shuffle uses `seed=42`, and saved result CSV files are included in the `results/` folder for reference.
 
 ### Out-of-memory error
 
-If the notebook runs out of memory, reduce the evaluation sizes in the notebook. For example, answer generation can be evaluated on fewer questions because generation is more computationally expensive than retrieval.
+Reduce generation evaluation size or run the notebook in Google Colab with GPU enabled.
 
 ## Authors
 
-- Joseph Yeung
 - Kevin Ma
+- Joseph Yeung
 - Zenan Luo
+
 
