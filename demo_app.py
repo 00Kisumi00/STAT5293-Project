@@ -318,7 +318,7 @@ def inspect_case(answer, gold_answer, contexts):
 
 **Automatic diagnosis:** {diagnosis_html}
 
-**How to read this demo:** Retrieval scores measure passage relevance, not answer correctness.  
+**How to read this demo:** Retrieval scores measure passage relevance, not answer correctness.
 A high rerank score means the passage is likely relevant to the question, but the generator can still fail to extract the exact answer span.
 """
 
@@ -373,9 +373,9 @@ def rag_demo(question):
             evidence_blocks.append(
                 f"""### Passage {rank}
 
-**Source:** {row["source"]}  
-**Retrieval score:** {row["score"]:.4f}  
-**Hybrid score:** {row.get("hybrid_score", 0):.4f}  
+**Source:** {row["source"]}
+**Retrieval score:** {row["score"]:.4f}
+**Hybrid score:** {row.get("hybrid_score", 0):.4f}
 **Rerank score:** {row["rerank_score"]:.4f}
 
 {row["text"]}
@@ -426,10 +426,13 @@ demo = gr.Interface(
     ],
     title="RAG Faithfulness Inspection Demo",
     description=(
-        "This demo is designed for faithfulness inspection rather than production QA. "
-        "It retrieves evidence using Hybrid Retrieval + Cross-Encoder Reranking, "
-        "generates a grounded answer with FLAN-T5, and displays the generated answer, "
-        "gold answer, retrieval scores, automatic diagnosis, and evidence passages."
+    "This demo is designed for RAG faithfulness inspection rather than production QA. "
+    "The intended user is a RAG developer or evaluator who wants to inspect whether "
+    "generated answers are supported by retrieved evidence. "
+    "It uses the same shuffled 2,000-example SQuAD validation subset as our evaluation. "
+    "The system retrieves candidates using BM25 and dense retrieval, reranks them with "
+    "a cross-encoder, sends the final top-5 passages to FLAN-T5, and displays the "
+    "generated answer, gold answer, retrieval scores, automatic diagnosis, and evidence passages."
     ),
     examples=example_questions,
     allow_flagging="never"
