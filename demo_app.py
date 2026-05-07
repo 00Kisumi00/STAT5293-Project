@@ -256,42 +256,67 @@ def inspect_case(answer, gold_answer, contexts):
 
     if has_gold:
         gold_status = "Yes — the gold answer appears in the retrieved evidence."
+        gold_status_html = (
+            "<span style='color: green; font-weight: bold;'>Yes</span> — "
+            "the gold answer appears in the retrieved evidence."
+        )
     else:
         gold_status = "No exact gold answer match found in the retrieved evidence."
+        gold_status_html = (
+            "<span style='color: red; font-weight: bold;'>No</span> — "
+            "no exact gold answer match was found in the retrieved evidence."
+        )
 
     if is_refusal and has_gold:
-        diagnosis = (
-            "Likely over-refusal: the retrieved evidence appears to contain the gold answer, "
-            "but the model still refused to answer."
+        case_status = "Failure case"
+        case_status_color = "red"
+        diagnosis_html = (
+            "<span style='color: red; font-weight: bold;'>Likely over-refusal</span>: "
+            "the retrieved evidence appears to contain the gold answer, but the model still refused to answer."
         )
+
     elif is_refusal and not has_gold:
-        diagnosis = (
-            "Likely retrieval or context-selection failure: the model refused, and the exact gold answer "
-            "was not found in the retrieved evidence."
+        case_status = "Failure case"
+        case_status_color = "red"
+        diagnosis_html = (
+            "<span style='color: red; font-weight: bold;'>Likely retrieval or context-selection failure</span>: "
+            "the model refused, and the exact gold answer was not found in the retrieved evidence."
         )
+
     elif answer_contains_gold:
-        diagnosis = (
-            "Likely successful case: the generated answer contains the gold answer string."
+        case_status = "Successful case"
+        case_status_color = "green"
+        diagnosis_html = (
+            "<span style='color: green; font-weight: bold;'>Likely successful case</span>: "
+            "the generated answer contains the gold answer string."
         )
+
     elif has_gold:
-        diagnosis = (
-            "Possible generation or formatting issue: the retrieved evidence contains the gold answer, "
-            "but the generated answer does not exactly match it."
+        case_status = "Needs inspection"
+        case_status_color = "orange"
+        diagnosis_html = (
+            "<span style='color: orange; font-weight: bold;'>Possible generation or formatting issue</span>: "
+            "the retrieved evidence contains the gold answer, but the generated answer does not exactly match it."
         )
+
     else:
-        diagnosis = (
-            "Possible retrieval failure, wrong answer, or paraphrase: the exact gold answer was not found "
-            "in the retrieved evidence."
+        case_status = "Needs inspection"
+        case_status_color = "orange"
+        diagnosis_html = (
+            "<span style='color: orange; font-weight: bold;'>Possible retrieval failure, wrong answer, or paraphrase</span>: "
+            "the exact gold answer was not found in the retrieved evidence."
         )
 
     inspection_note = f"""
 ### Faithfulness Inspection
 
-**Gold answer found in retrieved evidence:** {gold_status}
+**Case status:** <span style='color: {case_status_color}; font-weight: bold;'>{case_status}</span>
+
+**Gold answer found in retrieved evidence:** {gold_status_html}
 
 **Generated answer type:** {"Refusal / abstention" if is_refusal else "Non-refusal answer"}
 
-**Automatic diagnosis:** {diagnosis}
+**Automatic diagnosis:** {diagnosis_html}
 
 **How to read this demo:** Retrieval scores measure passage relevance, not answer correctness.  
 A high rerank score means the passage is likely relevant to the question, but the generator can still fail to extract the exact answer span.
@@ -396,7 +421,7 @@ demo = gr.Interface(
         gr.Textbox(label="Gold Answer"),
         gr.Textbox(label="Gold Answer Found in Retrieved Evidence"),
         gr.Dataframe(label="Retrieval Scores"),
-        gr.Markdown(label="Faithfulness Inspection Note"),
+        gr.Markdown(label="Automatic Faithfulness Diagnosis"),
         gr.Markdown(label="Retrieved Evidence")
     ],
     title="RAG Faithfulness Inspection Demo",
@@ -404,7 +429,7 @@ demo = gr.Interface(
         "This demo is designed for faithfulness inspection rather than production QA. "
         "It retrieves evidence using Hybrid Retrieval + Cross-Encoder Reranking, "
         "generates a grounded answer with FLAN-T5, and displays the generated answer, "
-        "gold answer, retrieval scores, automatic inspection note, and evidence passages."
+        "gold answer, retrieval scores, automatic diagnosis, and evidence passages."
     ),
     examples=example_questions,
     allow_flagging="never"
