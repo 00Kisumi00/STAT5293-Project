@@ -301,13 +301,6 @@ STAT5293-Project/
     └── selected_error_cases.csv
 ```
 
-If a recorded demo video is included, it can be placed under:
-
-```text
-demo/
-└── rag_faithfulness_demo.mp4
-```
-
 ## Setup
 
 Install dependencies:
