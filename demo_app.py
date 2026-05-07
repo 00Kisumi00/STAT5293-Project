@@ -1,4 +1,3 @@
-
 import re
 import numpy as np
 import pandas as pd
@@ -408,7 +407,21 @@ def rag_demo(question):
 # 9. Gradio app
 # =========================
 
-example_questions = df["question"].sample(5, random_state=7).tolist()
+# Prepared examples for demo recording / presentation:
+# 1. Red case: over-refusal. The gold answer is in retrieved evidence,
+#    but the generator says "Not enough information."
+# 2. Green case: successful grounded answer.
+example_questions = [
+    "In what year did Massachusetts first require children to be educated in schools?",
+    "What does LGM stands for?",
+]
+
+# A few additional SQuAD questions for optional interaction.
+extra_examples = df[~df["question"].isin(example_questions)]["question"].sample(
+    3,
+    random_state=11
+).tolist()
+example_questions.extend(extra_examples)
 
 demo = gr.Interface(
     fn=rag_demo,
@@ -426,14 +439,62 @@ demo = gr.Interface(
     ],
     title="RAG Faithfulness Inspection Demo",
     description=(
-    "This demo is designed for RAG faithfulness inspection rather than production QA. "
-    "The intended user is a RAG developer or evaluator who wants to inspect whether "
-    "generated answers are supported by retrieved evidence. "
-    "It uses the same shuffled 2,000-example SQuAD validation subset as our evaluation. "
-    "The system retrieves candidates using BM25 and dense retrieval, reranks them with "
-    "a cross-encoder, sends the final top-5 passages to FLAN-T5, and displays the "
-    "generated answer, gold answer, retrieval scores, automatic diagnosis, and evidence passages."
+        "This demo is designed as a RAG faithfulness inspection tool rather than a production chatbot. "
+        "The intended user is a RAG developer or evaluator who wants to inspect whether generated answers "
+        "are supported by retrieved evidence. "
+        "It uses the same shuffled 2,000-example SQuAD validation subset as our evaluation. "
+        "The system retrieves candidates using BM25 and dense retrieval, reranks them with a cross-encoder, "
+        "sends the final top-5 passages to FLAN-T5, and displays the generated answer, gold answer, "
+        "retrieval scores, automatic diagnosis, and evidence passages. "
+        "For the prepared demo, the first example shows an over-refusal failure case, and the second example "
+        "shows a successful grounded-answer case."
     ),
+    article="""
+## How to interpret this demo
+
+This interface is meant for **faithfulness inspection**, not just answer generation.
+
+- **Green diagnosis**: the generated answer contains the gold answer and is likely supported.
+- **Red diagnosis**: likely failure, such as over-refusal or missing retrieved evidence.
+- **Orange diagnosis**: the case needs manual inspection, usually because the answer may be a paraphrase, wrong span, or formatting mismatch.
+
+The retrieval scores measure passage relevance, not answer correctness.  
+A high rerank score means a passage is likely relevant to the question, but the generator can still fail to extract the exact answer span.
+
+## How to adapt this demo to another QA corpus
+
+This demo currently uses a fixed 2,000-example subset of the SQuAD validation set so that the live demo matches the evaluation setup.
+
+To use a different QA dataset or private document collection, replace the dataset-loading block with a table that contains the same three fields:
+
+- `question`: the user question
+- `context`: the source passage or document text
+- `answer`: the gold answer, if available
+
+For example, a custom CSV can be loaded like this:
+
+```python
+df = pd.read_csv("your_dataset.csv")
+
+df = df.rename(columns={
+    "your_question_column": "question",
+    "your_context_column": "context",
+    "your_answer_column": "answer"
+})
+
+documents = list(df["context"].drop_duplicates())
+```
+
+After replacing `df` and `documents`, the rest of the pipeline can stay mostly the same:
+
+1. chunk the documents;
+2. build the BM25 and dense indexes;
+3. retrieve and rerank top passages;
+4. generate a grounded answer;
+5. inspect whether the answer is supported by the retrieved evidence.
+
+If no gold answer is available, the demo can still be used for evidence inspection, but automatic gold-answer matching should be interpreted as unavailable rather than incorrect.
+""",
     examples=example_questions,
     allow_flagging="never"
 )
